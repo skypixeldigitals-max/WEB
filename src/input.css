@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #f9f9f9;
+    color: #0f0f0f;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Poiret One", sans-serif;
+  }
+  h1,
+  h2,
+  h3,
+  .nav-logo {
+    font-family: "Poiret One", sans-serif;
+  }
+}
+
+@layer components {
+  .bracket-link::before {
+    content: "[";
+    margin-right: 6px;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    display: inline-block;
+    transform: translateX(4px);
+  }
+  .bracket-link::after {
+    content: "]";
+    margin-left: 6px;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    display: inline-block;
+    transform: translateX(-4px);
+  }
+  .bracket-link:hover::before,
+  .bracket-link:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .active-nav::before {
+    content: "[";
+    margin-right: 6px;
+  }
+  .active-nav::after {
+    content: "]";
+    margin-left: 6px;
+  }
+
+  .image-reveal {
+    overflow: hidden;
+    background-color: #eeeeee;
+  }
+  .image-reveal img {
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .image-reveal:hover img {
+    transform: scale(1.03);
+  }
+
+  .hero-slide {
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+    visibility: hidden;
+  }
+  .hero-slide.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .text-balanced {
+    text-wrap: balance;
+  }
+
+  /* Poiret One is a thin display face; over photos it needs a shadow to stay legible. */
+  .hero-text-shadow {
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.55), 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+
+  .material-symbols-outlined {
+    font-family: "Material Symbols Outlined" !important;
+  }
+}
