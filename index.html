@@ -54,19 +54,43 @@
     <section class="relative h-[90vh] md:h-screen w-full flex items-center justify-center overflow-hidden bg-charcoal-deep" id="hero-slideshow">
         <div class="absolute inset-0 z-0">
             <div class="hero-slide absolute inset-0">
-                <img alt="Aerial view of a coastal resort, Sri Lanka" class="w-full h-full object-cover" src="images/hero-1.jpg">
+                <img alt="Aerial view of a cliffside villa pool above the ocean, Sri Lanka" class="w-full h-full object-cover" src="images/hero-1.jpg" fetchpriority="high">
             </div>
             <div class="hero-slide absolute inset-0">
-                <img alt="Living room opening onto tropical greenery" class="w-full h-full object-cover" src="images/hero-2.jpg">
+                <img alt="Aerial view of a coastal resort, Sri Lanka" class="w-full h-full object-cover" data-src="images/hero-2.jpg">
             </div>
             <div class="hero-slide absolute inset-0">
-                <img alt="Infinity pool at a boutique resort" class="w-full h-full object-cover" src="images/hero-3.jpg">
+                <img alt="Villa with a reflecting pool and lawn" class="w-full h-full object-cover" data-src="images/hero-3.jpg">
             </div>
             <div class="hero-slide absolute inset-0">
-                <img alt="Architectural corridor framing the sea" class="w-full h-full object-cover" src="images/hero-4.jpg">
+                <img alt="Boutique villa with pool and garden" class="w-full h-full object-cover" data-src="images/hero-4.jpg">
             </div>
             <div class="hero-slide absolute inset-0">
-                <img alt="Villa pool through tropical trees" class="w-full h-full object-cover" src="images/hero-5.jpg">
+                <img alt="Aerial top-down view of a villa and pool" class="w-full h-full object-cover" data-src="images/hero-5.jpg">
+            </div>
+            <div class="hero-slide absolute inset-0">
+                <img alt="Timber-framed interior staircase" class="w-full h-full object-cover" data-src="images/hero-6.jpg">
+            </div>
+            <div class="hero-slide absolute inset-0">
+                <img alt="Garden pathway leading to a villa" class="w-full h-full object-cover" data-src="images/hero-7.jpg">
+            </div>
+            <div class="hero-slide absolute inset-0">
+                <img alt="Aerial view of a villa among palms" class="w-full h-full object-cover" data-src="images/hero-8.jpg">
+            </div>
+            <div class="hero-slide absolute inset-0">
+                <img alt="Villa pool with a parasol" class="w-full h-full object-cover" data-src="images/hero-9.jpg">
+            </div>
+            <div class="hero-slide absolute inset-0">
+                <img alt="Minimal interior framing a still-water pool" class="w-full h-full object-cover" data-src="images/hero-10.jpg">
+            </div>
+            <div class="hero-slide absolute inset-0">
+                <img alt="Colonial villa across a manicured lawn" class="w-full h-full object-cover" data-src="images/hero-11.jpg">
+            </div>
+            <div class="hero-slide absolute inset-0">
+                <img alt="Arched timber doors along a villa courtyard" class="w-full h-full object-cover" data-src="images/hero-12.jpg">
+            </div>
+            <div class="hero-slide absolute inset-0">
+                <img alt="Pavilion villa with an open lawn" class="w-full h-full object-cover" data-src="images/hero-13.jpg">
             </div>
             <div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/55 via-black/25 to-black/35"></div>
         </div>
@@ -323,9 +347,18 @@
         }, 50);
     }
 
+    // Only slide 1 has a real src; the rest carry data-src and load on demand so the
+    // homepage stays light despite 13 full-bleed images.
+    function loadSlide(i) {
+        const img = heroSlides[i] && heroSlides[i].querySelector('img');
+        if (img && img.dataset.src && !img.getAttribute('src')) img.src = img.dataset.src;
+    }
+
     function showHeroSlide(index) {
         heroSlides.forEach(slide => slide.classList.remove('active'));
+        loadSlide(index);
         heroSlides[index].classList.add('active');
+        loadSlide((index + 1) % heroSlides.length); // preload the next slide
         resetProgress();
     }
 
