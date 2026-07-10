@@ -5,31 +5,35 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>SHAKIR JAMALDEEN | Architecture, Aerial &amp; Food Photography — Sri Lanka</title>
     <meta content="Commercial photography and video by Shakir Jamaldeen — architecture &amp; interiors, food, aerial, landscapes and products, for brands across Sri Lanka." name="description">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <!-- Open Graph / social share preview. TODO: set og:url and og:image to absolute https URLs once the domain is live. -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Shakir Jamaldeen Photography">
+    <meta property="og:title" content="Shakir Jamaldeen | Architecture, Aerial &amp; Food Photography — Sri Lanka">
+    <meta property="og:description" content="Commercial photography and video for brands across Sri Lanka — architecture, interiors, food, aerial, landscapes and products.">
+    <meta property="og:image" content="images/hero-1.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shakir Jamaldeen | Photography — Sri Lanka">
+    <meta name="twitter:description" content="Architecture, interiors, aerial and food photography for brands across Sri Lanka.">
+    <meta name="twitter:image" content="images/hero-1.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body class="bg-background text-on-surface selection:bg-primary selection:text-white font-body-md">
 
-<!-- ============================================================
-     Project photos are now real, self-hosted, web-optimized files
-     in /images (see scripts/optimize.js for the source mapping).
-     STILL PLACEHOLDER: the two logo <img> tags below still point at
-     Stitch's temporary CDN — no logo file was supplied. Replace with
-     a real /images/logo.png when available. Search "TODO-LOGO".
-     ============================================================ -->
-
 <!-- Navigation -->
 <nav class="fixed top-0 w-full z-50 bg-glass-overlay backdrop-blur-xl border-b border-black/5">
     <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-unit max-w-container-max mx-auto h-24">
-        <a class="nav-logo text-on-surface uppercase flex items-center gap-3" href="#">
+        <a class="nav-logo text-on-surface uppercase flex items-center gap-3" href="index.html">
             <img alt="Shakir Jamaldeen logo" class="h-11 w-auto object-contain" src="images/logo.png">
             <span class="hidden sm:block font-bold text-[16px] md:text-[20px] tracking-[0.18em]">SHAKIR JAMALDEEN</span>
         </a>
         <div class="hidden md:flex items-center gap-12 font-label-caps text-label-caps tracking-widest">
-            <a class="text-primary active-nav" href="#portfolio">PORTFOLIO</a>
-            <a class="text-secondary hover:text-primary transition-colors bracket-link" href="#about">ABOUT</a>
-            <a class="text-secondary hover:text-primary transition-colors bracket-link" href="#contact">CONTACT</a>
+            <a class="text-secondary hover:text-primary transition-colors bracket-link" href="portfolio.html">PORTFOLIO</a>
+            <a class="text-secondary hover:text-primary transition-colors bracket-link" href="about.html">ABOUT</a>
+            <a class="text-secondary hover:text-primary transition-colors bracket-link" href="about.html#contact">CONTACT</a>
         </div>
         <button aria-label="Toggle Menu" class="md:hidden p-2" id="menuToggle">
             <span class="material-symbols-outlined text-[32px]">menu</span>
@@ -38,9 +42,9 @@
     <!-- Mobile menu -->
     <div class="hidden md:hidden bg-glass-overlay backdrop-blur-xl border-b border-black/5" id="mobileMenu">
         <div class="flex flex-col gap-8 px-margin-mobile py-10 font-label-caps text-label-caps tracking-widest">
-            <a class="text-primary" href="#portfolio">PORTFOLIO</a>
-            <a class="text-secondary" href="#about">ABOUT</a>
-            <a class="text-secondary" href="#contact">CONTACT</a>
+            <a class="text-secondary" href="portfolio.html">PORTFOLIO</a>
+            <a class="text-secondary" href="about.html">ABOUT</a>
+            <a class="text-secondary" href="about.html#contact">CONTACT</a>
         </div>
     </div>
 </nav>
@@ -83,7 +87,7 @@
                 <h1 class="text-display-lg-mobile md:text-display-lg text-white text-balanced leading-[1] font-normal hero-text-shadow">
                     The silent dialogue between <br class="hidden md:block"> structure and light.
                 </h1>
-                <p class="font-body-lg text-body-lg text-white mt-8 max-w-2xl text-balanced hero-text-shadow">
+                <p class="font-body-lg text-body-lg text-white mt-8 max-w-2xl text-balanced hero-text-shadow text-crisp">
                     Commercial photography &amp; video for brands across Sri Lanka — architecture &amp; interiors, food, aerial, landscapes and products.
                 </p>
             </div>
@@ -92,101 +96,95 @@
 
     <!-- Featured Projects -->
     <section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="portfolio">
-        <header class="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-black/10 pb-8">
-            <div class="max-w-xl mb-8 md:mb-0">
+        <header class="mb-16 border-b border-black/10 pb-8">
+            <div class="max-w-xl">
                 <h2 class="text-headline-md mb-4 font-normal">Curated Projects</h2>
-                <p class="font-body-md text-body-md text-secondary leading-relaxed">A study of form, materiality and light across architecture, interiors and aerial work.</p>
+                <p class="font-body-md text-body-md text-secondary leading-relaxed text-crisp">A study of form, materiality and light across architecture, interiors and aerial work.</p>
             </div>
-            <nav class="flex flex-wrap gap-x-8 gap-y-4 font-label-caps text-label-caps text-secondary overflow-x-auto whitespace-nowrap pb-2 md:pb-0">
-                <span class="text-primary border-b-2 border-primary pb-2">ALL WORKS</span>
-                <span class="hover:text-primary cursor-pointer transition-colors pb-2 border-b-2 border-transparent">ARCHITECTURE</span>
-                <span class="hover:text-primary cursor-pointer transition-colors pb-2 border-b-2 border-transparent">INTERIORS</span>
-                <span class="hover:text-primary cursor-pointer transition-colors pb-2 border-b-2 border-transparent">AERIAL</span>
-            </nav>
         </header>
         <div class="grid grid-cols-1 md:grid-cols-12 md:gap-x-12 gap-y-24">
-            <!-- Project 1 -->
-            <article class="md:col-span-8 group cursor-pointer">
+            <!-- Project 1: Artotel Sanur -->
+            <a class="md:col-span-8 group cursor-pointer block" href="portfolio.html#artotel-sanur">
                 <div class="image-reveal aspect-[16/9] mb-6">
-                    <img alt="Timber-framed multi-storey architecture" class="w-full h-full object-cover" src="images/project-1-architecture.jpg">
+                    <img alt="Artotel Sanur — timber-framed architecture" class="w-full h-full object-cover" src="images/project-1-architecture.jpg">
                 </div>
                 <div class="flex items-start justify-between">
                     <div>
-                        <h3 class="text-2xl font-normal uppercase tracking-wide">Resort Architecture</h3>
-                        <p class="font-label-caps text-[12px] text-on-surface-variant tracking-[0.22em] mt-2 font-bold">ARCHITECTURE &amp; INTERIORS | SRI LANKA</p>
+                        <h3 class="text-2xl font-normal uppercase tracking-wide">Artotel Sanur</h3>
+                        <p class="font-label-caps text-[12px] text-on-surface-variant tracking-[0.22em] mt-2 font-bold">ARCHITECTURE &amp; INTERIORS</p>
                     </div>
                     <span class="material-symbols-outlined text-black translate-y-1 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">arrow_outward</span>
                 </div>
-            </article>
-            <!-- Project 2 -->
-            <article class="md:col-span-4 group cursor-pointer pt-0 md:pt-24">
+            </a>
+            <!-- Project 2: Le Grand Galle -->
+            <a class="md:col-span-4 group cursor-pointer pt-0 md:pt-24 block" href="portfolio.html#le-grand-galle">
                 <div class="image-reveal aspect-[4/5] mb-6">
-                    <img alt="Aerial view of a cliffside resort" class="w-full h-full object-cover" src="images/project-2-aerial.jpg">
+                    <img alt="Le Grand Galle — aerial view of the cliffside resort" class="w-full h-full object-cover" src="images/project-2-aerial.jpg">
                 </div>
                 <div class="flex items-start justify-between">
                     <div>
-                        <h3 class="text-2xl font-normal uppercase tracking-wide">From Above</h3>
-                        <p class="font-label-caps text-[12px] text-on-surface-variant tracking-[0.22em] mt-2 font-bold">AERIAL | SRI LANKA</p>
+                        <h3 class="text-2xl font-normal uppercase tracking-wide">Le Grand Galle</h3>
+                        <p class="font-label-caps text-[12px] text-on-surface-variant tracking-[0.22em] mt-2 font-bold">AERIAL | GALLE, SRI LANKA</p>
                     </div>
                     <span class="material-symbols-outlined text-black translate-y-1 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">arrow_outward</span>
                 </div>
-            </article>
-            <!-- Project 3 -->
-            <article class="md:col-span-12 group cursor-pointer">
+            </a>
+            <!-- Project 3: Cape Waligama -->
+            <a class="md:col-span-12 group cursor-pointer block" href="portfolio.html#cape-waligama">
                 <div class="image-reveal aspect-[21/9] mb-6">
-                    <img alt="Pool villa with garden pavilion" class="w-full h-full object-cover" src="images/project-3-poolvilla.jpg">
+                    <img alt="Cape Waligama — aerial view of the coastal resort" class="w-full h-full object-cover" src="images/portfolio/cape-waligama-1.jpg">
                 </div>
                 <div class="flex items-start justify-between">
                     <div>
-                        <h3 class="text-2xl font-normal uppercase tracking-wide">Poolside Villa</h3>
+                        <h3 class="text-2xl font-normal uppercase tracking-wide">Cape Waligama</h3>
+                        <p class="font-label-caps text-[12px] text-on-surface-variant tracking-[0.22em] mt-2 font-bold">AERIAL | WELIGAMA, SRI LANKA</p>
+                    </div>
+                    <span class="material-symbols-outlined text-black translate-y-1 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">arrow_outward</span>
+                </div>
+            </a>
+            <!-- Project 4: Ayr Castle -->
+            <a class="md:col-span-6 group cursor-pointer block" href="portfolio.html#ayr-castle">
+                <div class="image-reveal aspect-[4/3] mb-6">
+                    <img alt="Ayr Castle — four-poster suite interior" class="w-full h-full object-cover" src="images/project-4-suite.jpg">
+                </div>
+                <div class="flex items-start justify-between">
+                    <div>
+                        <h3 class="text-2xl font-normal uppercase tracking-wide">Ayr Castle</h3>
+                        <p class="font-label-caps text-[12px] text-on-surface-variant tracking-[0.22em] mt-2 font-bold">ARCHITECTURE &amp; INTERIORS</p>
+                    </div>
+                    <span class="material-symbols-outlined text-black translate-y-1 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">arrow_outward</span>
+                </div>
+            </a>
+            <!-- Project 5: Armitage Hill Galle -->
+            <a class="md:col-span-6 group cursor-pointer block" href="portfolio.html#armitage-hill-galle">
+                <div class="image-reveal aspect-[4/3] mb-6">
+                    <img alt="Armitage Hill Galle — living room with framed artwork" class="w-full h-full object-cover" src="images/project-5-living.jpg">
+                </div>
+                <div class="flex items-start justify-between">
+                    <div>
+                        <h3 class="text-2xl font-normal uppercase tracking-wide">Armitage Hill</h3>
+                        <p class="font-label-caps text-[12px] text-on-surface-variant tracking-[0.22em] mt-2 font-bold">INTERIORS | GALLE, SRI LANKA</p>
+                    </div>
+                    <span class="material-symbols-outlined text-black translate-y-1 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">arrow_outward</span>
+                </div>
+            </a>
+            <!-- Project 6: Helios Boutique Villa -->
+            <a class="md:col-span-12 group cursor-pointer block" href="portfolio.html#helios-boutique-villa">
+                <div class="image-reveal aspect-[21/9] mb-6">
+                    <img alt="Helios Boutique Villa — pool and lawn" class="w-full h-full object-cover" src="images/project-6-villa.jpg">
+                </div>
+                <div class="flex items-start justify-between">
+                    <div>
+                        <h3 class="text-2xl font-normal uppercase tracking-wide">Helios Boutique Villa</h3>
                         <p class="font-label-caps text-[12px] text-on-surface-variant tracking-[0.22em] mt-2 font-bold">ARCHITECTURE &amp; INTERIORS | SRI LANKA</p>
                     </div>
                     <span class="material-symbols-outlined text-black translate-y-1 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">arrow_outward</span>
                 </div>
-            </article>
-            <!-- Project 4 -->
-            <article class="md:col-span-6 group cursor-pointer">
-                <div class="image-reveal aspect-[4/3] mb-6">
-                    <img alt="Four-poster suite interior" class="w-full h-full object-cover" src="images/project-4-suite.jpg">
-                </div>
-                <div class="flex items-start justify-between">
-                    <div>
-                        <h3 class="text-2xl font-normal uppercase tracking-wide">Suite Interiors</h3>
-                        <p class="font-label-caps text-[12px] text-on-surface-variant tracking-[0.22em] mt-2 font-bold">INTERIORS | SRI LANKA</p>
-                    </div>
-                    <span class="material-symbols-outlined text-black translate-y-1 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">arrow_outward</span>
-                </div>
-            </article>
-            <!-- Project 5 -->
-            <article class="md:col-span-6 group cursor-pointer">
-                <div class="image-reveal aspect-[4/3] mb-6">
-                    <img alt="Living room with framed artwork" class="w-full h-full object-cover" src="images/project-5-living.jpg">
-                </div>
-                <div class="flex items-start justify-between">
-                    <div>
-                        <h3 class="text-2xl font-normal uppercase tracking-wide">Living Spaces</h3>
-                        <p class="font-label-caps text-[12px] text-on-surface-variant tracking-[0.22em] mt-2 font-bold">INTERIORS | SRI LANKA</p>
-                    </div>
-                    <span class="material-symbols-outlined text-black translate-y-1 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">arrow_outward</span>
-                </div>
-            </article>
-            <!-- Project 6 -->
-            <article class="md:col-span-12 group cursor-pointer">
-                <div class="image-reveal aspect-[21/9] mb-6">
-                    <img alt="Boutique villa with pool and lawn" class="w-full h-full object-cover" src="images/project-6-villa.jpg">
-                </div>
-                <div class="flex items-start justify-between">
-                    <div>
-                        <h3 class="text-2xl font-normal uppercase tracking-wide">Boutique Villa</h3>
-                        <p class="font-label-caps text-[12px] text-on-surface-variant tracking-[0.22em] mt-2 font-bold">ARCHITECTURE &amp; INTERIORS | SRI LANKA</p>
-                    </div>
-                    <span class="material-symbols-outlined text-black translate-y-1 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">arrow_outward</span>
-                </div>
-            </article>
+            </a>
         </div>
         <div class="mt-section-gap flex flex-col items-center gap-6">
             <p class="font-body-md text-body-md text-secondary italic">Discover the complete collection of commissioned work.</p>
-            <a class="font-label-caps text-label-caps text-primary border-b border-primary/30 pb-2 hover:border-primary transition-all duration-300" href="#portfolio">
+            <a class="font-label-caps text-label-caps text-primary border-b border-primary/30 pb-2 hover:border-primary transition-all duration-300" href="portfolio.html">
                 EXPLORE FULL PORTFOLIO
             </a>
         </div>
@@ -199,7 +197,7 @@
                 <div class="md:col-span-5 mb-12 md:mb-0">
                     <span class="font-label-caps text-[11px] text-secondary tracking-[0.4em] block mb-4 uppercase">Testimonials</span>
                     <h2 class="text-headline-md mb-6 font-normal">Partnerships in Design</h2>
-                    <p class="font-body-lg text-body-lg text-secondary max-w-md">"Nurturing theirs and my creativity to capture the essence of their brand, and together, producing some truly distinct images."</p>
+                    <p class="font-body-lg text-body-lg text-secondary max-w-md text-crisp">"Nurturing theirs and my creativity to capture the essence of their brand, and together, producing some truly distinct images."</p>
                     <div class="flex gap-8 mt-12">
                         <button class="w-16 h-16 border border-black/10 flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300 group" id="prevBtn">
                             <span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">west</span>
@@ -295,7 +293,6 @@
                     <div class="flex flex-col gap-3 text-[15px] text-on-surface-variant">
                         <a class="hover:text-black transition-colors" href="https://www.instagram.com/shakir.jamaldeen/" rel="noopener" target="_blank">Instagram</a>
                         <a class="hover:text-black transition-colors" href="https://www.facebook.com/shakirjamaldeenphoto" rel="noopener" target="_blank">Facebook</a>
-                        <a class="hover:text-black transition-colors" href="https://www.behance.net/ShakirJamaldeen" rel="noopener" target="_blank">Behance</a>
                     </div>
                 </div>
             </div>
@@ -395,7 +392,7 @@
         });
     }, observerOptions);
 
-    document.querySelectorAll('article, .image-reveal').forEach(el => {
+    document.querySelectorAll('a[href^="portfolio.html#"], .image-reveal').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
         el.style.transition = 'all 1.2s cubic-bezier(0.16, 1, 0.3, 1)';

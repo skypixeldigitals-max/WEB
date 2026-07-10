@@ -15,6 +15,13 @@
   .nav-logo {
     font-family: "Poiret One", sans-serif;
   }
+  /* Form controls don't inherit font-family by default — keep them on-brand. */
+  input,
+  textarea,
+  button,
+  select {
+    font-family: inherit;
+  }
 }
 
 @layer components {
@@ -77,6 +84,23 @@
   /* Poiret One is a thin display face; over photos it needs a shadow to stay legible. */
   .hero-text-shadow {
     text-shadow: 0 2px 24px rgba(0, 0, 0, 0.55), 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Poiret One only ships one weight, so real font-weight can't nudge it. A hair of
+     text-stroke thickens the thin subheading/descriptor lines just enough to read. */
+  .text-crisp {
+    -webkit-text-stroke: 0.4px currentColor;
+  }
+
+  /* Underline form field used on the contact section. */
+  .field {
+    @apply bg-transparent border-b border-black/25 pb-3 text-[16px] text-on-surface transition-colors;
+  }
+  .field::placeholder {
+    color: rgba(68, 71, 72, 0.7);
+  }
+  .field:focus {
+    @apply border-black outline-none;
   }
 
   .material-symbols-outlined {
