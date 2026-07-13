@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Portfolio | Shakir Jamaldeen Photography — Sri Lanka</title>
+    <title>Portfolio | Shakir Jamaldeen Photography, Sri Lanka</title>
     <meta content="A curated portfolio of villas, resorts and interiors shot by Shakir Jamaldeen across Sri Lanka." name="description">
     <link rel="icon" type="image/png" href="images/logo.png">
     <link rel="apple-touch-icon" href="images/logo.png">
     <!-- Open Graph / social share preview. TODO: set og:url and og:image to absolute https URLs once the domain is live. -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Shakir Jamaldeen Photography">
-    <meta property="og:title" content="Portfolio | Shakir Jamaldeen Photography — Sri Lanka">
+    <meta property="og:title" content="Portfolio | Shakir Jamaldeen Photography, Sri Lanka">
     <meta property="og:description" content="Villas, resorts and private homes across Sri Lanka, in architecture, interiors and aerial photography.">
     <meta property="og:image" content="images/portfolio/le-grand-galle-1.jpg">
     <meta name="twitter:card" content="summary_large_image">
@@ -57,7 +57,7 @@
 </header>
 
 <!-- Portfolio Sections -->
-<main class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto pb-section-gap space-y-24 md:space-y-32">
+<main class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto pb-24 md:pb-section-gap space-y-24 md:space-y-32">
 
         <section class="project-section grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start scroll-mt-32" id="aaathma">
             <div class="md:col-span-4 md:sticky md:top-32">
@@ -356,7 +356,7 @@
 </div>
 
 <!-- Footer -->
-<footer class="bg-canvas-off-white pt-section-gap pb-12 border-t border-black/5">
+<footer class="bg-canvas-off-white pt-20 md:pt-section-gap pb-12 border-t border-black/5">
     <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
         <div class="flex flex-col lg:flex-row justify-between items-start gap-16 mb-20">
             <div class="max-w-md">
@@ -419,7 +419,7 @@
         const n = g.images.length;
         currentIdx = ((currentIdx % n) + n) % n;
         lbImage.src = g.images[currentIdx];
-        lbImage.alt = g.name + ' — photo ' + (currentIdx + 1) + ' of ' + n;
+        lbImage.alt = g.name + ', photo ' + (currentIdx + 1) + ' of ' + n;
         lbTitle.textContent = g.name;
         lbCounter.textContent = String(currentIdx + 1).padStart(2, '0') + ' / ' + String(n).padStart(2, '0');
         preload(g.images[(currentIdx + 1) % n]);
