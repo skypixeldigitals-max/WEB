@@ -24,7 +24,7 @@ window.GALLERIES = {
   ]
  },
  "armitage-hill-galle": {
-  "name": "Armitage Hill Galle",
+  "name": "Armitage Hill",
   "images": [
    "images/gallery/armitage-hill-galle/01.jpg",
    "images/gallery/armitage-hill-galle/02.jpg",
@@ -143,7 +143,7 @@ window.GALLERIES = {
   ]
  },
  "landesi-galle": {
-  "name": "Landesi Galle",
+  "name": "Landesi",
   "images": [
    "images/gallery/landesi-galle/01.jpg",
    "images/gallery/landesi-galle/02.jpg",
@@ -158,7 +158,7 @@ window.GALLERIES = {
   ]
  },
  "le-grand-galle": {
-  "name": "Le Grand Galle",
+  "name": "Le Grand",
   "images": [
    "images/gallery/le-grand-galle/01.jpg",
    "images/gallery/le-grand-galle/02.jpg",
