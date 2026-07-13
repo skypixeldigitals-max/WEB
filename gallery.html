@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Gallery | Shakir Jamaldeen Photography</title>
+    <meta content="Full photo gallery of a Sri Lankan property, photographed by Shakir Jamaldeen." name="description">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-background text-on-surface selection:bg-primary selection:text-white font-body-md">
+
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-glass-overlay backdrop-blur-xl border-b border-black/5">
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-unit max-w-container-max mx-auto h-24">
+        <a class="nav-logo text-on-surface uppercase flex items-center gap-3" href="index.html">
+            <img alt="Shakir Jamaldeen logo" class="h-11 w-auto object-contain" src="images/logo.png">
+            <span class="hidden sm:block font-bold text-[16px] md:text-[20px] tracking-[0.18em]">SHAKIR JAMALDEEN</span>
+        </a>
+        <div class="hidden md:flex items-center gap-12 font-label-caps text-label-caps tracking-widest">
+            <a class="text-primary active-nav" href="portfolio.html">PORTFOLIO</a>
+            <a class="text-secondary hover:text-primary transition-colors bracket-link" href="about.html">ABOUT</a>
+            <a class="text-secondary hover:text-primary transition-colors bracket-link" href="about.html#contact">CONTACT</a>
+        </div>
+        <button aria-label="Toggle Menu" class="md:hidden p-2" id="menuToggle">
+            <span class="material-symbols-outlined text-[32px]">menu</span>
+        </button>
+    </div>
+    <div class="hidden md:hidden bg-glass-overlay backdrop-blur-xl border-b border-black/5" id="mobileMenu">
+        <div class="flex flex-col gap-8 px-margin-mobile py-10 font-label-caps text-label-caps tracking-widest">
+            <a class="text-primary" href="portfolio.html">PORTFOLIO</a>
+            <a class="text-secondary" href="about.html">ABOUT</a>
+            <a class="text-secondary" href="about.html#contact">CONTACT</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Header -->
+<header class="pt-32 md:pt-40 pb-10 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+    <a class="group inline-flex items-center gap-2 font-label-caps text-label-caps text-secondary hover:text-primary uppercase tracking-widest mb-8 transition-colors" href="portfolio.html">
+        <span class="material-symbols-outlined text-[18px] group-hover:-translate-x-1 transition-transform">arrow_back</span>
+        Back to portfolio
+    </a>
+    <h1 class="text-display-lg-mobile md:text-display-lg uppercase tracking-tight leading-[0.95] mb-4" id="galleryTitle">Gallery</h1>
+    <p class="font-label-caps text-[12px] text-on-surface-variant tracking-[0.2em] font-bold uppercase" id="gallerySubtitle"></p>
+</header>
+
+<!-- Album grid -->
+<main class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto pb-24 md:pb-section-gap">
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5" id="galleryGrid"></div>
+    <p class="hidden text-center font-body-md text-secondary py-24" id="galleryEmpty">Gallery not found. <a class="underline" href="portfolio.html">Return to the portfolio</a>.</p>
+</main>
+
+<!-- Lightbox (full-size viewer) -->
+<div aria-hidden="true" class="fixed inset-0 z-[100] bg-black/95 hidden flex-col" id="lightbox">
+    <div class="flex justify-between items-center px-6 md:px-12 h-20 shrink-0">
+        <span class="font-label-caps text-label-caps text-white/90 uppercase tracking-widest" id="lbTitle"></span>
+        <div class="flex items-center gap-8">
+            <span class="font-label-caps text-label-caps text-white/60 tracking-widest" id="lbCounter"></span>
+            <button aria-label="Close gallery" class="text-white/60 hover:text-white transition-colors" id="lbClose" type="button">
+                <span class="material-symbols-outlined text-[32px]">close</span>
+            </button>
+        </div>
+    </div>
+    <div class="relative flex-1 flex items-center justify-center px-4 md:px-24 pb-8 min-h-0">
+        <button aria-label="Previous photo" class="absolute left-2 md:left-8 z-10 text-white/60 hover:text-white transition-colors p-2" id="lbPrev" type="button">
+            <span class="material-symbols-outlined text-[44px]">chevron_left</span>
+        </button>
+        <img alt="" class="max-w-full max-h-full object-contain select-none" id="lbImage" src="">
+        <button aria-label="Next photo" class="absolute right-2 md:right-8 z-10 text-white/60 hover:text-white transition-colors p-2" id="lbNext" type="button">
+            <span class="material-symbols-outlined text-[44px]">chevron_right</span>
+        </button>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-canvas-off-white pt-20 md:pt-section-gap pb-12 border-t border-black/5">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        <div class="flex flex-col lg:flex-row justify-between items-start gap-16 mb-20">
+            <div class="max-w-md">
+                <a class="flex items-center gap-4 mb-8" href="index.html">
+                    <img alt="Shakir Jamaldeen logo" class="h-14 w-auto object-contain" src="images/logo.png">
+                    <span class="uppercase font-bold text-[20px] tracking-[0.18em] text-on-surface">Shakir Jamaldeen</span>
+                </a>
+                <p class="text-[17px] text-on-surface/90 leading-loose">
+                    Commercial photography for brands across Sri Lanka. Architecture &amp; interiors, food, aerial and landscapes. Precision in every frame.
+                </p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-x-16 gap-y-12">
+                <div class="flex flex-col gap-5">
+                    <span class="uppercase font-bold tracking-[0.2em] text-[13px] text-on-surface">Based in</span>
+                    <p class="text-[15px] text-on-surface-variant leading-relaxed">Sri Lanka<br>Available world-wide</p>
+                </div>
+                <div class="flex flex-col gap-5">
+                    <span class="uppercase font-bold tracking-[0.2em] text-[13px] text-on-surface">Contact</span>
+                    <a class="text-[15px] text-on-surface-variant hover:text-black transition-colors underline decoration-black/20 underline-offset-4 break-all" href="mailto:shakir.jamaldeen@gmail.com">shakir.jamaldeen@gmail.com</a>
+                    <a class="text-[15px] text-on-surface-variant hover:text-black transition-colors" href="tel:+94777536266">+94 77 753 6266</a>
+                </div>
+                <div class="flex flex-col gap-5">
+                    <span class="uppercase font-bold tracking-[0.2em] text-[13px] text-on-surface">Social</span>
+                    <div class="flex flex-col gap-3 text-[15px] text-on-surface-variant">
+                        <a class="hover:text-black transition-colors" href="https://www.instagram.com/shakir.jamaldeen/" rel="noopener" target="_blank">Instagram</a>
+                        <a class="hover:text-black transition-colors" href="https://www.facebook.com/shakirjamaldeenphoto" rel="noopener" target="_blank">Facebook</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-between items-center pt-10 border-t border-black/10 gap-6">
+            <p class="uppercase tracking-[0.12em] text-[12px] text-on-surface-variant">
+                © 2026 Shakir Jamaldeen Photography. All rights reserved.
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/gallery-data.js"></script>
+<script>
+    // City · type per property (matches the portfolio subtitles).
+    const SUBTITLES = {
+        "aaathma": "Sri Jayawardenepura Kotte, Sri Lanka · Interiors",
+        "armitage-hill-galle": "Galle, Sri Lanka · Architecture & Interiors",
+        "artotel-sanur": "Bali, Indonesia · Interiors",
+        "ayr-castle": "Padukka, Sri Lanka · Architecture & Interiors",
+        "cape-waligama": "Weligama, Sri Lanka · Aerial & Interiors",
+        "helios-boutique-villa": "Ahangama, Sri Lanka · Architecture & Interiors",
+        "kalkudah-beach-house": "Kalkudah, Sri Lanka · Aerial & Architecture",
+        "landesi-galle": "Galle, Sri Lanka · Interiors",
+        "le-grand-galle": "Galle, Sri Lanka · Aerial & Architecture",
+        "leela-walauwwa": "Induruwa, Sri Lanka · Architecture & Interiors",
+        "mayur-lodge": "Tissamaharama, Sri Lanka · Aerial & Interiors",
+        "nine-skies": "Ella, Sri Lanka · Aerial & Landscapes",
+        "on-the-rocks": "Unawatuna, Sri Lanka · Aerial & Architecture",
+        "rock-villa": "Bentota, Sri Lanka · Aerial & Landscapes",
+        "solar-crab": "Negombo, Sri Lanka · Architecture & Interiors",
+        "sun-house": "Galle, Sri Lanka · Aerial & Architecture",
+        "why-house": "Galle, Sri Lanka · Aerial & Interiors"
+    };
+
+    const slug = new URLSearchParams(location.search).get('p');
+    const g = (window.GALLERIES || {})[slug];
+    const grid = document.getElementById('galleryGrid');
+
+    if (g) {
+        document.title = g.name + ' | Shakir Jamaldeen Photography';
+        document.getElementById('galleryTitle').textContent = g.name;
+        document.getElementById('gallerySubtitle').textContent = SUBTITLES[slug] || '';
+        g.images.forEach((src, i) => {
+            const tile = document.createElement('div');
+            tile.className = 'image-reveal aspect-[4/3] overflow-hidden cursor-pointer';
+            const img = document.createElement('img');
+            img.className = 'w-full h-full object-cover';
+            img.loading = 'lazy';
+            img.src = src;
+            img.alt = g.name + ', photo ' + (i + 1);
+            tile.appendChild(img);
+            tile.addEventListener('click', () => openLightbox(i));
+            grid.appendChild(tile);
+        });
+    } else {
+        grid.classList.add('hidden');
+        document.getElementById('galleryEmpty').classList.remove('hidden');
+    }
+
+    // Mobile menu
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+    // Lightbox (single property = current slug)
+    const lb = document.getElementById('lightbox');
+    const lbImage = document.getElementById('lbImage');
+    const lbTitle = document.getElementById('lbTitle');
+    const lbCounter = document.getElementById('lbCounter');
+    let currentIdx = 0;
+
+    function preload(src) { const i = new Image(); i.src = src; }
+
+    function render() {
+        if (!g) return;
+        const n = g.images.length;
+        currentIdx = ((currentIdx % n) + n) % n;
+        lbImage.src = g.images[currentIdx];
+        lbImage.alt = g.name + ', photo ' + (currentIdx + 1) + ' of ' + n;
+        lbTitle.textContent = g.name;
+        lbCounter.textContent = String(currentIdx + 1).padStart(2, '0') + ' / ' + String(n).padStart(2, '0');
+        preload(g.images[(currentIdx + 1) % n]);
+        preload(g.images[(currentIdx - 1 + n) % n]);
+    }
+
+    function openLightbox(start) {
+        currentIdx = start || 0;
+        lb.classList.remove('hidden');
+        lb.classList.add('flex');
+        lb.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        render();
+    }
+
+    function closeLightbox() {
+        lb.classList.add('hidden');
+        lb.classList.remove('flex');
+        lb.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        lbImage.src = '';
+    }
+
+    document.getElementById('lbClose').addEventListener('click', closeLightbox);
+    document.getElementById('lbPrev').addEventListener('click', () => { currentIdx--; render(); });
+    document.getElementById('lbNext').addEventListener('click', () => { currentIdx++; render(); });
+    lb.addEventListener('click', (e) => { if (e.target === lb || e.target === lb.firstElementChild) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+        if (lb.classList.contains('hidden')) return;
+        if (e.key === 'Escape') closeLightbox();
+        else if (e.key === 'ArrowLeft') { currentIdx--; render(); }
+        else if (e.key === 'ArrowRight') { currentIdx++; render(); }
+    });
+    window.addEventListener('pageshow', (e) => { if (e.persisted) closeLightbox(); });
+
+    // Swipe support
+    let touchX = null;
+    lb.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', (e) => {
+        if (touchX === null) return;
+        const dx = e.changedTouches[0].clientX - touchX;
+        if (Math.abs(dx) > 50) { currentIdx += dx < 0 ? 1 : -1; render(); }
+        touchX = null;
+    }, { passive: true });
+</script>
+</body>
+</html>
