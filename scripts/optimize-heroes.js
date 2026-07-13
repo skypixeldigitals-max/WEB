@@ -28,8 +28,10 @@ const ORDER = [
   for (let i = 0; i < ORDER.length; i++) {
     const info = await sharp(path.join(SRC, ORDER[i]))
       .rotate()
-      .resize({ width: 2200, height: 1500, fit: "inside", withoutEnlargement: true })
-      .jpeg({ quality: 74, progressive: true, mozjpeg: true })
+      // Full-bleed hero: high res for retina/large screens + higher quality to kill
+      // sky/water banding. Only hero-1 loads eagerly; the rest are lazy-loaded.
+      .resize({ width: 3840, height: 2560, fit: "inside", withoutEnlargement: true })
+      .jpeg({ quality: 80, progressive: true, mozjpeg: true })
       .toFile(path.join(OUT, `hero-${i + 1}.jpg`));
     total += info.size;
     console.log(`hero-${i + 1}.jpg`.padEnd(13), info.width + "x" + info.height, Math.round(info.size / 1024) + "KB");
