@@ -75,7 +75,7 @@ window.GALLERIES = {
   ]
  },
  "cape-waligama": {
-  "name": "Cape Waligama",
+  "name": "Cape Weligama",
   "images": [
    "images/gallery/cape-waligama/01.jpg",
    "images/gallery/cape-waligama/02.jpg",
