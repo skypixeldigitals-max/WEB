@@ -96,14 +96,14 @@
                 </div>
                 <div class="flex flex-col gap-5">
                     <span class="uppercase font-bold tracking-[0.2em] text-[13px] text-on-surface">Contact</span>
-                    <a class="text-[15px] text-on-surface-variant hover:text-black transition-colors underline decoration-black/20 underline-offset-4 break-all" href="mailto:shakir.jamaldeen@gmail.com">shakir.jamaldeen@gmail.com</a>
-                    <a class="text-[15px] text-on-surface-variant hover:text-black transition-colors" href="tel:+94777536266">+94 77 753 6266</a>
+                    <a class="flex items-center gap-3 text-[15px] text-on-surface-variant hover:text-black transition-colors break-all" href="mailto:shakir.jamaldeen@gmail.com"><span class="material-symbols-outlined text-[19px] shrink-0">mail</span>shakir.jamaldeen@gmail.com</a>
+                    <a class="flex items-center gap-3 text-[15px] text-on-surface-variant hover:text-black transition-colors" href="tel:+94777536266"><span class="material-symbols-outlined text-[19px] shrink-0">call</span>+94 77 753 6266</a>
                 </div>
                 <div class="flex flex-col gap-5">
                     <span class="uppercase font-bold tracking-[0.2em] text-[13px] text-on-surface">Social</span>
-                    <div class="flex flex-col gap-3 text-[15px] text-on-surface-variant">
-                        <a class="hover:text-black transition-colors" href="https://www.instagram.com/shakir.jamaldeen/" rel="noopener" target="_blank">Instagram</a>
-                        <a class="hover:text-black transition-colors" href="https://www.facebook.com/shakirjamaldeenphoto" rel="noopener" target="_blank">Facebook</a>
+                    <div class="flex items-center gap-4 text-on-surface-variant">
+                        <a class="hover:text-black transition-colors" href="https://www.instagram.com/shakir.jamaldeen/" rel="noopener" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-[22px] h-[22px]"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a>
+                        <a class="hover:text-black transition-colors" href="https://www.facebook.com/shakirjamaldeenphoto" rel="noopener" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" class="w-[22px] h-[22px]"><path d="M14 21v-7h2.4l.4-2.8H14V9.3c0-.8.22-1.35 1.4-1.35H17V5.4c-.3-.04-1.1-.13-2-.13-2 0-3.4 1.22-3.4 3.46v1.93H9v2.8h2.6V21H14z"/></svg></a>
                     </div>
                 </div>
             </div>
@@ -118,25 +118,23 @@
 
 <script src="js/gallery-data.js"></script>
 <script>
-    // City · type per property (matches the portfolio subtitles).
-    const SUBTITLES = {
-        "aaathma": "Sri Jayawardenepura Kotte, Sri Lanka · Interiors",
-        "armitage-hill-galle": "Galle, Sri Lanka · Architecture & Interiors",
-        "artotel-sanur": "Bali, Indonesia · Interiors",
-        "ayr-castle": "Padukka, Sri Lanka · Architecture & Interiors",
-        "cape-waligama": "Weligama, Sri Lanka · Aerial & Interiors",
-        "helios-boutique-villa": "Ahangama, Sri Lanka · Architecture & Interiors",
-        "kalkudah-beach-house": "Kalkudah, Sri Lanka · Aerial & Architecture",
-        "landesi-galle": "Galle, Sri Lanka · Interiors",
-        "le-grand-galle": "Galle, Sri Lanka · Aerial & Architecture",
-        "leela-walauwwa": "Induruwa, Sri Lanka · Architecture & Interiors",
-        "mayur-lodge": "Tissamaharama, Sri Lanka · Aerial & Interiors",
-        "nine-skies": "Ella, Sri Lanka · Aerial & Landscapes",
-        "on-the-rocks": "Unawatuna, Sri Lanka · Aerial & Architecture",
-        "rock-villa": "Bentota, Sri Lanka · Aerial & Landscapes",
-        "solar-crab": "Negombo, Sri Lanka · Architecture & Interiors",
-        "sun-house": "Galle, Sri Lanka · Aerial & Architecture",
-        "why-house": "Galle, Sri Lanka · Aerial & Interiors"
+    // City"aaathma": "Sri Jayawardenepura Kotte, Sri Lanka",
+        "armitage-hill-galle": "Galle, Sri Lanka",
+        "artotel-sanur": "Bali, Indonesia",
+        "ayr-castle": "Padukka, Sri Lanka",
+        "cape-waligama": "Weligama, Sri Lanka",
+        "helios-boutique-villa": "Ahangama, Sri Lanka",
+        "kalkudah-beach-house": "Kalkudah, Sri Lanka",
+        "landesi-galle": "Galle, Sri Lanka",
+        "le-grand-galle": "Galle, Sri Lanka",
+        "leela-walauwwa": "Induruwa, Sri Lanka",
+        "mayur-lodge": "Tissamaharama, Sri Lanka",
+        "nine-skies": "Ella, Sri Lanka",
+        "on-the-rocks": "Unawatuna, Sri Lanka",
+        "rock-villa": "Bentota, Sri Lanka",
+        "solar-crab": "Negombo, Sri Lanka",
+        "sun-house": "Galle, Sri Lanka",
+        "why-house": "Galle, Sri Lanka"
     };
 
     const slug = new URLSearchParams(location.search).get('p');
