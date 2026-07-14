@@ -264,36 +264,52 @@
 
     function renderImages(imgs) {
         window._imgs = imgs;
-        $('imgCount').textContent = imgs.length ? '(' + imgs.length + ')' : '';
+        $('imgCount').textContent = imgs.length ? '(' + imgs.length + ') — drag to reorder' : '';
         $('noImages').classList.toggle('hidden', imgs.length > 0);
         $('imageManager').innerHTML = imgs.map((im, i) => `
-            <div class="relative group aspect-square overflow-hidden bg-surface-container">
-                <img class="w-full h-full object-cover" src="${esc(im.url)}" alt="">
-                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1">
-                    <button data-img-move="up" data-id="${im.id}" class="text-white ${i === 0 ? 'opacity-30 pointer-events-none' : ''}"><span class="material-symbols-outlined">chevron_left</span></button>
-                    <button data-img-del="${im.id}" class="text-white"><span class="material-symbols-outlined">delete</span></button>
-                    <button data-img-move="down" data-id="${im.id}" class="text-white ${i === imgs.length - 1 ? 'opacity-30 pointer-events-none' : ''}"><span class="material-symbols-outlined">chevron_right</span></button>
+            <div class="relative group aspect-square overflow-hidden bg-surface-container cursor-grab active:cursor-grabbing" draggable="true" data-img-id="${im.id}">
+                <img class="w-full h-full object-cover pointer-events-none" src="${esc(im.url)}" alt="">
+                ${i === 0 ? '<span class="absolute top-1.5 left-1.5 bg-black/70 text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 pointer-events-none">Cover</span>' : ''}
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 pointer-events-none">
+                    <span class="material-symbols-outlined text-white/70 text-[20px]">drag_indicator</span>
+                    <button data-img-del="${im.id}" class="text-white pointer-events-auto"><span class="material-symbols-outlined">delete</span></button>
                 </div>
             </div>`).join('');
+        wireDragAndDrop();
+    }
+
+    function wireDragAndDrop() {
+        const tiles = [...$('imageManager').querySelectorAll('[data-img-id]')];
+        let dragId = null;
+        tiles.forEach(t => {
+            t.addEventListener('dragstart', () => { dragId = t.getAttribute('data-img-id'); t.classList.add('opacity-40'); });
+            t.addEventListener('dragend', () => t.classList.remove('opacity-40'));
+            t.addEventListener('dragover', (e) => { e.preventDefault(); t.classList.add('ring-2', 'ring-black'); });
+            t.addEventListener('dragleave', () => t.classList.remove('ring-2', 'ring-black'));
+            t.addEventListener('drop', async (e) => {
+                e.preventDefault(); t.classList.remove('ring-2', 'ring-black');
+                const dropId = t.getAttribute('data-img-id');
+                if (!dragId || dragId === dropId) return;
+                await reorderImages(dragId, dropId);
+            });
+        });
+    }
+
+    async function reorderImages(dragId, dropId) {
+        const imgs = window._imgs.slice();
+        const fromIdx = imgs.findIndex(x => x.id === dragId);
+        const toIdx = imgs.findIndex(x => x.id === dropId);
+        const [moved] = imgs.splice(fromIdx, 1);
+        imgs.splice(toIdx, 0, moved);
+        // Persist the whole new sequence so any drop position works, not just adjacent swaps.
+        await Promise.all(imgs.map((im, i) => sb.from('property_images').update({ sort_order: i + 1 }).eq('id', im.id)));
+        await loadImages();
     }
 
     $('imageManager').addEventListener('click', async (e) => {
         const del = e.target.closest('[data-img-del]');
-        const mv = e.target.closest('[data-img-move]');
         if (del) { await sb.from('property_images').delete().eq('id', del.getAttribute('data-img-del')); await loadImages(); }
-        else if (mv) { await moveImage(mv.getAttribute('data-id'), mv.getAttribute('data-img-move')); }
     });
-
-    async function moveImage(id, dir) {
-        const imgs = window._imgs;
-        const idx = imgs.findIndex(x => x.id === id);
-        const swapIdx = dir === 'up' ? idx - 1 : idx + 1;
-        if (swapIdx < 0 || swapIdx >= imgs.length) return;
-        const a = imgs[idx], b = imgs[swapIdx];
-        await sb.from('property_images').update({ sort_order: b.sort_order }).eq('id', a.id);
-        await sb.from('property_images').update({ sort_order: a.sort_order }).eq('id', b.id);
-        await loadImages();
-    }
 
     // ---------- IMAGE UPLOAD (resize client-side) ----------
     async function resizeToBlob(file, maxDim = 2400, quality = 0.82) {
