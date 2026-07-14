@@ -49,6 +49,7 @@
         <div class="flex items-center gap-6 font-label-caps text-[12px] uppercase tracking-widest">
             <a href="index.html" target="_blank" class="text-on-surface-variant hover:text-black transition-colors hidden sm:inline">View site</a>
             <span id="userEmail" class="text-on-surface-variant hidden md:inline"></span>
+            <button id="changePwBtn" class="text-on-surface-variant hover:text-black transition-colors hidden sm:inline">Change password</button>
             <button id="logoutBtn" class="text-on-surface-variant hover:text-black transition-colors">Log out</button>
         </div>
     </header>
@@ -153,6 +154,14 @@
     });
 
     $('logoutBtn').addEventListener('click', async () => { await sb.auth.signOut(); });
+
+    $('changePwBtn').addEventListener('click', async () => {
+        const pw = prompt('Enter a new password (at least 8 characters):');
+        if (pw === null) return;
+        if (pw.length < 8) { alert('Password must be at least 8 characters.'); return; }
+        const { error } = await sb.auth.updateUser({ password: pw });
+        alert(error ? ('Could not update password: ' + error.message) : 'Password updated.');
+    });
 
     async function enterApp(session) {
         hide($('loginView')); hide($('recoveryView')); show($('appView'));
