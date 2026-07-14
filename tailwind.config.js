@@ -1,7 +1,7 @@
 /** Tailwind config — ported 1:1 from the Stitch "Architectural Narrative" design system.
  *  Only deliberate change: font fallback "cursive" -> "sans-serif" (production safety). */
 module.exports = {
-  content: ["./index.html", "./portfolio.html", "./about.html", "./gallery.html"],
+  content: ["./index.html", "./portfolio.html", "./about.html", "./gallery.html", "./admin.html"],
   darkMode: "class",
   theme: {
     extend: {

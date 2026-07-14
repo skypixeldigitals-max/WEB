@@ -116,96 +116,38 @@
     </div>
 </footer>
 
-<script src="js/gallery-data.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/sb.js"></script>
 <script>
-    // City"aaathma": "Sri Jayawardenepura Kotte, Sri Lanka",
-        "armitage-hill-galle": "Galle, Sri Lanka",
-        "artotel-sanur": "Bali, Indonesia",
-        "ayr-castle": "Padukka, Sri Lanka",
-        "cape-waligama": "Weligama, Sri Lanka",
-        "helios-boutique-villa": "Ahangama, Sri Lanka",
-        "kalkudah-beach-house": "Kalkudah, Sri Lanka",
-        "landesi-galle": "Galle, Sri Lanka",
-        "le-grand-galle": "Galle, Sri Lanka",
-        "leela-walauwwa": "Induruwa, Sri Lanka",
-        "mayur-lodge": "Tissamaharama, Sri Lanka",
-        "nine-skies": "Ella, Sri Lanka",
-        "on-the-rocks": "Unawatuna, Sri Lanka",
-        "rock-villa": "Bentota, Sri Lanka",
-        "solar-crab": "Negombo, Sri Lanka",
-        "sun-house": "Galle, Sri Lanka",
-        "why-house": "Galle, Sri Lanka"
-    };
-
-    const slug = new URLSearchParams(location.search).get('p');
-    const g = (window.GALLERIES || {})[slug];
-    const grid = document.getElementById('galleryGrid');
-
-    if (g) {
-        document.title = g.name + ' | Shakir Jamaldeen Photography';
-        document.getElementById('galleryTitle').textContent = g.name;
-        document.getElementById('gallerySubtitle').textContent = SUBTITLES[slug] || '';
-        g.images.forEach((src, i) => {
-            const tile = document.createElement('div');
-            tile.className = 'image-reveal aspect-[4/3] overflow-hidden cursor-pointer';
-            const img = document.createElement('img');
-            img.className = 'w-full h-full object-cover';
-            img.loading = 'lazy';
-            img.src = src;
-            img.alt = g.name + ', photo ' + (i + 1);
-            tile.appendChild(img);
-            tile.addEventListener('click', () => openLightbox(i));
-            grid.appendChild(tile);
-        });
-    } else {
-        grid.classList.add('hidden');
-        document.getElementById('galleryEmpty').classList.remove('hidden');
-    }
-
     // Mobile menu
     const menuToggle = document.getElementById('menuToggle');
     const mobileMenu = document.getElementById('mobileMenu');
     menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
     mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
-    // Lightbox (single property = current slug)
+    const grid = document.getElementById('galleryGrid');
+    const slug = new URLSearchParams(location.search).get('p');
+    let images = [];
+    let propName = '';
+
+    // Lightbox
     const lb = document.getElementById('lightbox');
     const lbImage = document.getElementById('lbImage');
     const lbTitle = document.getElementById('lbTitle');
     const lbCounter = document.getElementById('lbCounter');
     let currentIdx = 0;
-
     function preload(src) { const i = new Image(); i.src = src; }
-
     function render() {
-        if (!g) return;
-        const n = g.images.length;
+        const n = images.length; if (!n) return;
         currentIdx = ((currentIdx % n) + n) % n;
-        lbImage.src = g.images[currentIdx];
-        lbImage.alt = g.name + ', photo ' + (currentIdx + 1) + ' of ' + n;
-        lbTitle.textContent = g.name;
+        lbImage.src = images[currentIdx];
+        lbImage.alt = propName + ', photo ' + (currentIdx + 1) + ' of ' + n;
+        lbTitle.textContent = propName;
         lbCounter.textContent = String(currentIdx + 1).padStart(2, '0') + ' / ' + String(n).padStart(2, '0');
-        preload(g.images[(currentIdx + 1) % n]);
-        preload(g.images[(currentIdx - 1 + n) % n]);
+        preload(images[(currentIdx + 1) % n]); preload(images[(currentIdx - 1 + n) % n]);
     }
-
-    function openLightbox(start) {
-        currentIdx = start || 0;
-        lb.classList.remove('hidden');
-        lb.classList.add('flex');
-        lb.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-        render();
-    }
-
-    function closeLightbox() {
-        lb.classList.add('hidden');
-        lb.classList.remove('flex');
-        lb.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-        lbImage.src = '';
-    }
-
+    function openLightbox(start) { currentIdx = start || 0; lb.classList.remove('hidden'); lb.classList.add('flex'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; render(); }
+    function closeLightbox() { lb.classList.add('hidden'); lb.classList.remove('flex'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; lbImage.src = ''; }
     document.getElementById('lbClose').addEventListener('click', closeLightbox);
     document.getElementById('lbPrev').addEventListener('click', () => { currentIdx--; render(); });
     document.getElementById('lbNext').addEventListener('click', () => { currentIdx++; render(); });
@@ -217,16 +159,39 @@
         else if (e.key === 'ArrowRight') { currentIdx++; render(); }
     });
     window.addEventListener('pageshow', (e) => { if (e.persisted) closeLightbox(); });
-
-    // Swipe support
     let touchX = null;
     lb.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
-    lb.addEventListener('touchend', (e) => {
-        if (touchX === null) return;
-        const dx = e.changedTouches[0].clientX - touchX;
-        if (Math.abs(dx) > 50) { currentIdx += dx < 0 ? 1 : -1; render(); }
-        touchX = null;
-    }, { passive: true });
+    lb.addEventListener('touchend', (e) => { if (touchX === null) return; const dx = e.changedTouches[0].clientX - touchX; if (Math.abs(dx) > 50) { currentIdx += dx < 0 ? 1 : -1; render(); } touchX = null; }, { passive: true });
+
+    function showEmpty() { grid.classList.add('hidden'); document.getElementById('galleryEmpty').classList.remove('hidden'); }
+
+    // Load the property + its photos from the database
+    (async () => {
+        if (!slug) { showEmpty(); return; }
+        try {
+            const { data, error } = await sb
+                .from('properties')
+                .select('name,location,property_images(url,sort_order)')
+                .eq('slug', slug).eq('status', 'published').maybeSingle();
+            if (error) throw error;
+            if (!data) { showEmpty(); return; }
+            propName = data.name;
+            images = (data.property_images || []).slice().sort((a, b) => a.sort_order - b.sort_order).map(x => x.url);
+            document.title = data.name + ' | Shakir Jamaldeen Photography';
+            document.getElementById('galleryTitle').textContent = data.name;
+            document.getElementById('gallerySubtitle').textContent = data.location || '';
+            if (!images.length) { showEmpty(); return; }
+            images.forEach((src, i) => {
+                const tile = document.createElement('div');
+                tile.className = 'image-reveal aspect-[4/3] overflow-hidden cursor-pointer';
+                const img = document.createElement('img');
+                img.className = 'w-full h-full object-cover'; img.loading = 'lazy'; img.src = src; img.alt = data.name + ', photo ' + (i + 1);
+                tile.appendChild(img);
+                tile.addEventListener('click', () => openLightbox(i));
+                grid.appendChild(tile);
+            });
+        } catch (e) { console.error(e); showEmpty(); }
+    })();
 </script>
 </body>
 </html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Admin — Shakir Jamaldeen Photography</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-background text-on-surface font-body-md">
+
+<!-- ============ LOGIN ============ -->
+<div id="loginView" class="min-h-screen flex items-center justify-center px-6">
+    <form id="loginForm" class="w-full max-w-sm">
+        <img alt="logo" class="h-14 w-auto object-contain mx-auto mb-8" src="images/logo.png">
+        <h1 class="text-headline-md font-normal text-center mb-2">Admin</h1>
+        <p class="text-[13px] text-on-surface-variant text-center mb-10">Sign in to manage the portfolio.</p>
+        <label class="block font-label-caps text-[12px] text-on-surface-variant tracking-[0.2em] font-bold uppercase mb-2">Email</label>
+        <input id="loginEmail" type="email" required autocomplete="email" class="w-full bg-transparent border-b border-black/25 pb-3 mb-6 text-[16px] focus:border-black focus:outline-none transition-colors">
+        <label class="block font-label-caps text-[12px] text-on-surface-variant tracking-[0.2em] font-bold uppercase mb-2">Password</label>
+        <input id="loginPassword" type="password" required autocomplete="current-password" class="w-full bg-transparent border-b border-black/25 pb-3 mb-8 text-[16px] focus:border-black focus:outline-none transition-colors">
+        <button type="submit" class="w-full bg-primary text-white px-8 py-4 font-label-caps text-label-caps uppercase tracking-widest hover:bg-on-surface-variant transition-all duration-300">Sign in</button>
+        <button type="button" id="forgotBtn" class="w-full text-center mt-6 font-label-caps text-[12px] text-on-surface-variant hover:text-black uppercase tracking-widest transition-colors">Forgot password?</button>
+        <p id="loginMsg" class="text-center text-[13px] mt-6 min-h-[20px]"></p>
+    </form>
+</div>
+
+<!-- ============ SET NEW PASSWORD (recovery) ============ -->
+<div id="recoveryView" class="hidden min-h-screen flex items-center justify-center px-6">
+    <form id="recoveryForm" class="w-full max-w-sm">
+        <h1 class="text-headline-md font-normal text-center mb-8">Set a new password</h1>
+        <label class="block font-label-caps text-[12px] text-on-surface-variant tracking-[0.2em] font-bold uppercase mb-2">New password</label>
+        <input id="newPassword" type="password" required minlength="8" autocomplete="new-password" class="w-full bg-transparent border-b border-black/25 pb-3 mb-8 text-[16px] focus:border-black focus:outline-none transition-colors">
+        <button type="submit" class="w-full bg-primary text-white px-8 py-4 font-label-caps text-label-caps uppercase tracking-widest hover:bg-on-surface-variant transition-all duration-300">Update password</button>
+        <p id="recoveryMsg" class="text-center text-[13px] mt-6 min-h-[20px]"></p>
+    </form>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="appView" class="hidden">
+    <header class="flex items-center justify-between px-6 md:px-12 h-20 border-b border-black/10 sticky top-0 bg-background z-40">
+        <div class="flex items-center gap-3">
+            <img alt="logo" class="h-9 w-auto object-contain" src="images/logo.png">
+            <span class="font-bold uppercase tracking-[0.18em] text-[15px]">Portfolio Admin</span>
+        </div>
+        <div class="flex items-center gap-6 font-label-caps text-[12px] uppercase tracking-widest">
+            <a href="index.html" target="_blank" class="text-on-surface-variant hover:text-black transition-colors hidden sm:inline">View site</a>
+            <span id="userEmail" class="text-on-surface-variant hidden md:inline"></span>
+            <button id="logoutBtn" class="text-on-surface-variant hover:text-black transition-colors">Log out</button>
+        </div>
+    </header>
+
+    <!-- LIST -->
+    <section id="listView" class="max-w-4xl mx-auto px-6 py-10">
+        <div class="flex items-center justify-between mb-8">
+            <h1 class="text-headline-md font-normal">Properties <span id="propCount" class="text-on-surface-variant text-[18px]"></span></h1>
+            <button id="addBtn" class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 font-label-caps text-label-caps uppercase tracking-widest hover:bg-on-surface-variant transition-all duration-300"><span class="material-symbols-outlined text-[18px]">add</span>Add property</button>
+        </div>
+        <div id="propList" class="flex flex-col divide-y divide-black/10 border-y border-black/10"></div>
+        <p id="listMsg" class="text-center text-[14px] text-on-surface-variant py-10"></p>
+    </section>
+
+    <!-- EDITOR -->
+    <section id="editView" class="hidden max-w-3xl mx-auto px-6 py-10">
+        <button id="backBtn" class="inline-flex items-center gap-2 mb-8 font-label-caps text-[12px] text-on-surface-variant hover:text-black uppercase tracking-widest transition-colors"><span class="material-symbols-outlined text-[18px]">arrow_back</span>All properties</button>
+        <h1 id="editTitle" class="text-headline-md font-normal mb-8">New property</h1>
+        <div class="flex flex-col gap-6">
+            <div>
+                <label class="block font-label-caps text-[12px] text-on-surface-variant tracking-[0.2em] font-bold uppercase mb-2">Property name</label>
+                <input id="fName" type="text" placeholder="e.g. Sun House" class="w-full bg-transparent border-b border-black/25 pb-3 text-[16px] focus:border-black focus:outline-none transition-colors">
+            </div>
+            <div>
+                <label class="block font-label-caps text-[12px] text-on-surface-variant tracking-[0.2em] font-bold uppercase mb-2">Location (city, country)</label>
+                <input id="fLocation" type="text" placeholder="e.g. Galle, Sri Lanka" class="w-full bg-transparent border-b border-black/25 pb-3 text-[16px] focus:border-black focus:outline-none transition-colors">
+            </div>
+            <div>
+                <label class="block font-label-caps text-[12px] text-on-surface-variant tracking-[0.2em] font-bold uppercase mb-2">Description (optional)</label>
+                <textarea id="fDescription" rows="3" placeholder="A short note about the property or shoot" class="w-full bg-transparent border-b border-black/25 pb-3 text-[16px] focus:border-black focus:outline-none transition-colors resize-none"></textarea>
+            </div>
+            <div>
+                <label class="block font-label-caps text-[12px] text-on-surface-variant tracking-[0.2em] font-bold uppercase mb-3">Status</label>
+                <div class="flex gap-3">
+                    <button type="button" data-status="draft" class="statusBtn px-5 py-2.5 border border-black/25 font-label-caps text-[12px] uppercase tracking-widest transition-all">Draft</button>
+                    <button type="button" data-status="published" class="statusBtn px-5 py-2.5 border border-black/25 font-label-caps text-[12px] uppercase tracking-widest transition-all">Published</button>
+                </div>
+                <p class="text-[12px] text-on-surface-variant mt-2">Drafts are only visible here. Published properties appear on the public portfolio.</p>
+            </div>
+
+            <div class="pt-4 border-t border-black/10">
+                <div class="flex items-center justify-between mb-4">
+                    <label class="font-label-caps text-[12px] text-on-surface-variant tracking-[0.2em] font-bold uppercase">Photos <span id="imgCount"></span></label>
+                    <label class="inline-flex items-center gap-2 cursor-pointer bg-surface-container px-5 py-2.5 font-label-caps text-[12px] uppercase tracking-widest hover:bg-surface-container-high transition-colors">
+                        <span class="material-symbols-outlined text-[18px]">upload</span>Upload photos
+                        <input id="fileInput" type="file" accept="image/*" multiple class="hidden">
+                    </label>
+                </div>
+                <p id="uploadMsg" class="text-[13px] text-on-surface-variant mb-4 min-h-[18px]"></p>
+                <div id="imageManager" class="grid grid-cols-3 sm:grid-cols-4 gap-3"></div>
+                <p id="noImages" class="hidden text-[13px] text-on-surface-variant py-6 text-center">No photos yet. Upload some above.</p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-4 pt-6 border-t border-black/10">
+                <button id="saveBtn" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 font-label-caps text-label-caps uppercase tracking-widest hover:bg-on-surface-variant transition-all duration-300">Save</button>
+                <button id="deleteBtn" class="hidden inline-flex items-center gap-2 border border-error text-error px-6 py-4 font-label-caps text-[12px] uppercase tracking-widest hover:bg-error hover:text-white transition-all duration-300">Delete property</button>
+                <span id="saveMsg" class="text-[13px] text-on-surface-variant"></span>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/sb.js"></script>
+<script>
+    const $ = (id) => document.getElementById(id);
+    const show = (el) => el.classList.remove('hidden');
+    const hide = (el) => el.classList.add('hidden');
+    const esc = (s) => (s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+    // ---------- AUTH ----------
+    let recovering = false;
+    sb.auth.onAuthStateChange((event, session) => {
+        if (event === 'PASSWORD_RECOVERY') { recovering = true; hide($('loginView')); hide($('appView')); show($('recoveryView')); return; }
+        if (recovering) return;
+        if (session) enterApp(session);
+        else { hide($('appView')); hide($('recoveryView')); show($('loginView')); }
+    });
+
+    $('loginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        $('loginMsg').textContent = 'Signing in…'; $('loginMsg').className = 'text-center text-[13px] mt-6 text-on-surface-variant';
+        const { error } = await sb.auth.signInWithPassword({ email: $('loginEmail').value.trim(), password: $('loginPassword').value });
+        if (error) { $('loginMsg').textContent = error.message; $('loginMsg').className = 'text-center text-[13px] mt-6 text-error'; }
+    });
+
+    $('forgotBtn').addEventListener('click', async () => {
+        const email = $('loginEmail').value.trim();
+        if (!email) { $('loginMsg').textContent = 'Enter your email above first.'; $('loginMsg').className = 'text-center text-[13px] mt-6 text-error'; return; }
+        const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: location.origin + location.pathname });
+        $('loginMsg').textContent = error ? error.message : 'Password reset link sent — check your email.';
+        $('loginMsg').className = 'text-center text-[13px] mt-6 ' + (error ? 'text-error' : 'text-on-surface-variant');
+    });
+
+    $('recoveryForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        $('recoveryMsg').textContent = 'Updating…'; $('recoveryMsg').className = 'text-center text-[13px] mt-6 text-on-surface-variant';
+        const { error } = await sb.auth.updateUser({ password: $('newPassword').value });
+        if (error) { $('recoveryMsg').textContent = error.message; $('recoveryMsg').className = 'text-center text-[13px] mt-6 text-error'; return; }
+        recovering = false; $('recoveryMsg').textContent = 'Password updated. Loading…';
+        const { data } = await sb.auth.getSession(); enterApp(data.session);
+    });
+
+    $('logoutBtn').addEventListener('click', async () => { await sb.auth.signOut(); });
+
+    async function enterApp(session) {
+        hide($('loginView')); hide($('recoveryView')); show($('appView'));
+        $('userEmail').textContent = session.user.email;
+        showList();
+        await loadProperties();
+    }
+
+    // ---------- LIST ----------
+    function showList() { show($('listView')); hide($('editView')); }
+    function showEdit() { hide($('listView')); show($('editView')); }
+
+    async function loadProperties() {
+        $('listMsg').textContent = 'Loading…';
+        const { data, error } = await sb.from('properties')
+            .select('id,slug,name,location,status,sort_order,property_images(count)')
+            .order('sort_order');
+        if (error) { $('listMsg').textContent = error.message; return; }
+        $('listMsg').textContent = '';
+        $('propCount').textContent = '(' + data.length + ')';
+        $('propList').innerHTML = data.map((p, i) => {
+            const count = (p.property_images && p.property_images[0] && p.property_images[0].count) || 0;
+            const badge = p.status === 'published'
+                ? '<span class="text-[11px] font-bold uppercase tracking-widest text-on-surface">Published</span>'
+                : '<span class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant/70">Draft</span>';
+            return `<div class="flex items-center gap-4 py-4">
+                <div class="flex flex-col gap-1 mr-1">
+                    <button data-move="up" data-id="${p.id}" class="text-on-surface-variant hover:text-black ${i === 0 ? 'opacity-20 pointer-events-none' : ''}" title="Move up"><span class="material-symbols-outlined text-[18px]">keyboard_arrow_up</span></button>
+                    <button data-move="down" data-id="${p.id}" class="text-on-surface-variant hover:text-black ${i === data.length - 1 ? 'opacity-20 pointer-events-none' : ''}" title="Move down"><span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span></button>
+                </div>
+                <button data-edit="${p.id}" class="flex-1 text-left">
+                    <div class="text-[18px]">${esc(p.name)}</div>
+                    <div class="text-[13px] text-on-surface-variant">${esc(p.location)} · ${count} photo${count === 1 ? '' : 's'}</div>
+                </button>
+                ${badge}
+                <button data-edit="${p.id}" class="text-on-surface-variant hover:text-black"><span class="material-symbols-outlined">edit</span></button>
+            </div>`;
+        }).join('');
+        window._props = data;
+    }
+
+    $('propList').addEventListener('click', async (e) => {
+        const editId = e.target.closest('[data-edit]');
+        const moveBtn = e.target.closest('[data-move]');
+        if (editId) { openEditor(editId.getAttribute('data-edit')); return; }
+        if (moveBtn) { await moveProperty(moveBtn.getAttribute('data-id'), moveBtn.getAttribute('data-move')); }
+    });
+
+    async function moveProperty(id, dir) {
+        const props = window._props;
+        const idx = props.findIndex(p => p.id === id);
+        const swapIdx = dir === 'up' ? idx - 1 : idx + 1;
+        if (swapIdx < 0 || swapIdx >= props.length) return;
+        const a = props[idx], b = props[swapIdx];
+        await sb.from('properties').update({ sort_order: b.sort_order }).eq('id', a.id);
+        await sb.from('properties').update({ sort_order: a.sort_order }).eq('id', b.id);
+        await loadProperties();
+    }
+
+    $('addBtn').addEventListener('click', () => openEditor(null));
+    $('backBtn').addEventListener('click', () => { showList(); loadProperties(); });
+
+    // ---------- EDITOR ----------
+    let current = null; // {id, slug, ...} or null for new
+    let editStatus = 'draft';
+
+    document.querySelectorAll('.statusBtn').forEach(b => b.addEventListener('click', () => setStatus(b.getAttribute('data-status'))));
+    function setStatus(s) {
+        editStatus = s;
+        document.querySelectorAll('.statusBtn').forEach(b => {
+            const on = b.getAttribute('data-status') === s;
+            b.classList.toggle('bg-primary', on); b.classList.toggle('text-white', on); b.classList.toggle('border-primary', on);
+        });
+    }
+
+    async function openEditor(id) {
+        showEdit();
+        $('saveMsg').textContent = ''; $('uploadMsg').textContent = '';
+        if (!id) {
+            current = null;
+            $('editTitle').textContent = 'New property';
+            $('fName').value = ''; $('fLocation').value = ''; $('fDescription').value = '';
+            setStatus('draft'); hide($('deleteBtn'));
+            $('imageManager').innerHTML = ''; renderImages([]);
+            return;
+        }
+        const { data } = await sb.from('properties').select('*').eq('id', id).single();
+        current = data;
+        $('editTitle').textContent = data.name;
+        $('fName').value = data.name; $('fLocation').value = data.location; $('fDescription').value = data.description || '';
+        setStatus(data.status); show($('deleteBtn'));
+        await loadImages();
+    }
+
+    async function loadImages() {
+        if (!current) { renderImages([]); return; }
+        const { data } = await sb.from('property_images').select('*').eq('property_id', current.id).order('sort_order');
+        renderImages(data || []);
+    }
+
+    function renderImages(imgs) {
+        window._imgs = imgs;
+        $('imgCount').textContent = imgs.length ? '(' + imgs.length + ')' : '';
+        $('noImages').classList.toggle('hidden', imgs.length > 0);
+        $('imageManager').innerHTML = imgs.map((im, i) => `
+            <div class="relative group aspect-square overflow-hidden bg-surface-container">
+                <img class="w-full h-full object-cover" src="${esc(im.url)}" alt="">
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1">
+                    <button data-img-move="up" data-id="${im.id}" class="text-white ${i === 0 ? 'opacity-30 pointer-events-none' : ''}"><span class="material-symbols-outlined">chevron_left</span></button>
+                    <button data-img-del="${im.id}" class="text-white"><span class="material-symbols-outlined">delete</span></button>
+                    <button data-img-move="down" data-id="${im.id}" class="text-white ${i === imgs.length - 1 ? 'opacity-30 pointer-events-none' : ''}"><span class="material-symbols-outlined">chevron_right</span></button>
+                </div>
+            </div>`).join('');
+    }
+
+    $('imageManager').addEventListener('click', async (e) => {
+        const del = e.target.closest('[data-img-del]');
+        const mv = e.target.closest('[data-img-move]');
+        if (del) { await sb.from('property_images').delete().eq('id', del.getAttribute('data-img-del')); await loadImages(); }
+        else if (mv) { await moveImage(mv.getAttribute('data-id'), mv.getAttribute('data-img-move')); }
+    });
+
+    async function moveImage(id, dir) {
+        const imgs = window._imgs;
+        const idx = imgs.findIndex(x => x.id === id);
+        const swapIdx = dir === 'up' ? idx - 1 : idx + 1;
+        if (swapIdx < 0 || swapIdx >= imgs.length) return;
+        const a = imgs[idx], b = imgs[swapIdx];
+        await sb.from('property_images').update({ sort_order: b.sort_order }).eq('id', a.id);
+        await sb.from('property_images').update({ sort_order: a.sort_order }).eq('id', b.id);
+        await loadImages();
+    }
+
+    // ---------- IMAGE UPLOAD (resize client-side) ----------
+    async function resizeToBlob(file, maxDim = 2400, quality = 0.82) {
+        const bmp = await createImageBitmap(file);
+        let w = bmp.width, h = bmp.height;
+        if (Math.max(w, h) > maxDim) { const s = maxDim / Math.max(w, h); w = Math.round(w * s); h = Math.round(h * s); }
+        const c = document.createElement('canvas'); c.width = w; c.height = h;
+        c.getContext('2d').drawImage(bmp, 0, 0, w, h);
+        return await new Promise(res => c.toBlob(res, 'image/jpeg', quality));
+    }
+
+    $('fileInput').addEventListener('change', async (e) => {
+        const files = [...e.target.files]; e.target.value = '';
+        if (!files.length) return;
+        // Need a saved property (for slug + id) before attaching images
+        if (!current) { const ok = await ensureSaved(); if (!ok) return; }
+        const startOrder = (window._imgs || []).reduce((m, x) => Math.max(m, x.sort_order), 0);
+        let done = 0;
+        for (const file of files) {
+            $('uploadMsg').textContent = `Uploading ${done + 1} of ${files.length}…`;
+            try {
+                const blob = await resizeToBlob(file);
+                const path = `${current.slug}/${Date.now()}-${Math.random().toString(36).slice(2, 7)}.jpg`;
+                const up = await sb.storage.from('property-images').upload(path, blob, { contentType: 'image/jpeg' });
+                if (up.error) throw up.error;
+                const { data: pub } = sb.storage.from('property-images').getPublicUrl(path);
+                await sb.from('property_images').insert({ property_id: current.id, url: pub.publicUrl, sort_order: startOrder + (++done) });
+            } catch (err) { $('uploadMsg').textContent = 'Upload failed: ' + err.message; return; }
+        }
+        $('uploadMsg').textContent = `Uploaded ${done} photo${done === 1 ? '' : 's'}.`;
+        await loadImages();
+    });
+
+    // Create the property if it doesn't exist yet (so uploads have somewhere to attach)
+    async function ensureSaved() {
+        const name = $('fName').value.trim();
+        if (!name) { $('uploadMsg').textContent = 'Add a property name first, then upload.'; return false; }
+        const saved = await saveProperty(true);
+        return saved;
+    }
+
+    function slugify(s) { return s.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, ''); }
+    async function uniqueSlug(base) {
+        let slug = base || 'property', n = 1;
+        while (true) {
+            const { data } = await sb.from('properties').select('id').eq('slug', slug).maybeSingle();
+            if (!data) return slug;
+            slug = base + '-' + (++n);
+        }
+    }
+
+    $('saveBtn').addEventListener('click', () => saveProperty(false));
+
+    async function saveProperty(silent) {
+        const name = $('fName').value.trim();
+        if (!name) { $('saveMsg').textContent = 'Name is required.'; $('saveMsg').className = 'text-[13px] text-error'; return false; }
+        const payload = { name, location: $('fLocation').value.trim(), description: $('fDescription').value.trim(), status: editStatus };
+        $('saveMsg').textContent = 'Saving…'; $('saveMsg').className = 'text-[13px] text-on-surface-variant';
+        try {
+            if (current) {
+                await sb.from('properties').update(payload).eq('id', current.id);
+                current = { ...current, ...payload };
+            } else {
+                const { data: mx } = await sb.from('properties').select('sort_order').order('sort_order', { ascending: false }).limit(1).maybeSingle();
+                payload.sort_order = (mx ? mx.sort_order : 0) + 1;
+                payload.slug = await uniqueSlug(slugify(name));
+                const { data, error } = await sb.from('properties').insert(payload).select().single();
+                if (error) throw error;
+                current = data; $('editTitle').textContent = data.name; show($('deleteBtn'));
+            }
+            $('saveMsg').textContent = 'Saved.'; $('saveMsg').className = 'text-[13px] text-on-surface-variant';
+            if (!silent) { setTimeout(() => { showList(); loadProperties(); }, 500); }
+            return true;
+        } catch (err) { $('saveMsg').textContent = err.message; $('saveMsg').className = 'text-[13px] text-error'; return false; }
+    }
+
+    $('deleteBtn').addEventListener('click', async () => {
+        if (!current) return;
+        if (!confirm('Delete "' + current.name + '" and all its photos? This cannot be undone.')) return;
+        await sb.from('properties').delete().eq('id', current.id);
+        showList(); loadProperties();
+    });
+</script>
+</body>
+</html>
