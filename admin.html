@@ -54,6 +54,11 @@
         </div>
     </header>
 
+    <div class="max-w-4xl mx-auto px-6 pt-8 flex gap-8 font-label-caps text-[12px] uppercase tracking-widest">
+        <button id="navProps" class="pb-2 border-b-2 border-primary transition-colors">Properties</button>
+        <button id="navReviews" class="pb-2 border-b-2 border-transparent text-on-surface-variant hover:text-black transition-colors">Reviews</button>
+    </div>
+
     <!-- LIST -->
     <section id="listView" class="max-w-4xl mx-auto px-6 py-10">
         <div class="flex items-center justify-between mb-8">
@@ -120,6 +125,48 @@
                 <button id="previewBtn" class="hidden inline-flex items-center gap-2 border border-black/25 px-6 py-4 font-label-caps text-[12px] uppercase tracking-widest hover:bg-primary hover:text-white transition-all duration-300"><span class="material-symbols-outlined text-[18px]">visibility</span>Preview</button>
                 <button id="deleteBtn" class="hidden inline-flex items-center gap-2 border border-error text-error px-6 py-4 font-label-caps text-[12px] uppercase tracking-widest hover:bg-error hover:text-white transition-all duration-300">Delete property</button>
                 <span id="saveMsg" class="text-[13px] text-on-surface-variant"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS LIST -->
+    <section id="reviewsListView" class="hidden max-w-4xl mx-auto px-6 py-10">
+        <div class="flex items-center justify-between mb-8">
+            <h1 class="text-headline-md font-normal">Reviews <span id="reviewCount" class="text-on-surface-variant text-[18px]"></span></h1>
+            <button id="addReviewBtn" class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 font-label-caps text-label-caps uppercase tracking-widest hover:bg-on-surface-variant transition-all duration-300"><span class="material-symbols-outlined text-[18px]">add</span>Add review</button>
+        </div>
+        <div id="reviewList" class="flex flex-col divide-y divide-black/10 border-y border-black/10"></div>
+        <p id="reviewListMsg" class="text-center text-[14px] text-on-surface-variant py-10"></p>
+    </section>
+
+    <!-- REVIEW EDITOR -->
+    <section id="reviewEditView" class="hidden max-w-3xl mx-auto px-6 py-10">
+        <button id="reviewBackBtn" class="inline-flex items-center gap-2 mb-8 font-label-caps text-[12px] text-on-surface-variant hover:text-black uppercase tracking-widest transition-colors"><span class="material-symbols-outlined text-[18px]">arrow_back</span>All reviews</button>
+        <h1 id="reviewEditTitle" class="text-headline-md font-normal mb-8">New review</h1>
+        <div class="flex flex-col gap-6">
+            <div>
+                <label class="block font-label-caps text-[12px] text-on-surface-variant tracking-[0.2em] font-bold uppercase mb-2">Client name</label>
+                <input id="rAuthor" type="text" placeholder="e.g. Kimberley" class="w-full bg-transparent border-b border-black/25 pb-3 text-[16px] focus:border-black focus:outline-none transition-colors">
+            </div>
+            <div>
+                <label class="block font-label-caps text-[12px] text-on-surface-variant tracking-[0.2em] font-bold uppercase mb-2">Company / hotel (optional)</label>
+                <input id="rCompany" type="text" placeholder="e.g. Camelot Beach Hotel" class="w-full bg-transparent border-b border-black/25 pb-3 text-[16px] focus:border-black focus:outline-none transition-colors">
+            </div>
+            <div>
+                <label class="block font-label-caps text-[12px] text-on-surface-variant tracking-[0.2em] font-bold uppercase mb-2">Review</label>
+                <textarea id="rQuote" rows="4" placeholder="What the client said" class="w-full bg-transparent border-b border-black/25 pb-3 text-[16px] focus:border-black focus:outline-none transition-colors resize-none"></textarea>
+            </div>
+            <div>
+                <label class="block font-label-caps text-[12px] text-on-surface-variant tracking-[0.2em] font-bold uppercase mb-3">Status</label>
+                <div class="flex gap-3">
+                    <button type="button" data-rstatus="draft" class="rStatusBtn px-5 py-2.5 border border-black/25 font-label-caps text-[12px] uppercase tracking-widest transition-all">Draft</button>
+                    <button type="button" data-rstatus="published" class="rStatusBtn px-5 py-2.5 border border-black/25 font-label-caps text-[12px] uppercase tracking-widest transition-all">Published</button>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-4 pt-6 border-t border-black/10">
+                <button id="reviewSaveBtn" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 font-label-caps text-label-caps uppercase tracking-widest hover:bg-on-surface-variant transition-all duration-300">Save</button>
+                <button id="reviewDeleteBtn" class="hidden inline-flex items-center gap-2 border border-error text-error px-6 py-4 font-label-caps text-[12px] uppercase tracking-widest hover:bg-error hover:text-white transition-all duration-300">Delete review</button>
+                <span id="reviewSaveMsg" class="text-[13px] text-on-surface-variant"></span>
             </div>
         </div>
     </section>
@@ -459,6 +506,73 @@
         if (!confirm('Delete "' + current.name + '" and all its photos? This cannot be undone.')) return;
         await sb.from('properties').delete().eq('id', current.id);
         showList(); loadProperties();
+    });
+
+    // ---------- REVIEWS ----------
+    let currentReview = null;
+    let rStatus = 'draft';
+
+    function activateTab(which) {
+        const props = which === 'props';
+        $('navProps').classList.toggle('border-primary', props); $('navProps').classList.toggle('border-transparent', !props); $('navProps').classList.toggle('text-on-surface-variant', !props);
+        $('navReviews').classList.toggle('border-primary', !props); $('navReviews').classList.toggle('border-transparent', props); $('navReviews').classList.toggle('text-on-surface-variant', props);
+        if (props) { hide($('reviewsListView')); hide($('reviewEditView')); showList(); }
+        else { hide($('listView')); hide($('editView')); hide($('reviewEditView')); show($('reviewsListView')); loadReviews(); }
+    }
+    $('navProps').addEventListener('click', () => activateTab('props'));
+    $('navReviews').addEventListener('click', () => activateTab('reviews'));
+
+    async function loadReviews() {
+        $('reviewListMsg').textContent = 'Loading…';
+        const { data, error } = await sb.from('reviews').select('*').order('sort_order');
+        if (error) { $('reviewListMsg').textContent = error.message; return; }
+        $('reviewListMsg').textContent = data.length ? '' : 'No reviews yet.';
+        $('reviewCount').textContent = '(' + data.length + ')';
+        $('reviewList').innerHTML = data.map(r => `<div class="flex items-center gap-3 py-4">
+            <button data-redit="${r.id}" class="flex-1 text-left min-w-0">
+                <div class="text-[15px] truncate">${esc(r.quote)}</div>
+                <div class="text-[13px] text-on-surface-variant">${esc(r.author)}${r.company ? ' · ' + esc(r.company) : ''}</div>
+            </button>
+            <span class="text-[11px] font-bold uppercase tracking-widest ${r.status === 'published' ? 'text-on-surface' : 'text-on-surface-variant/70'}">${r.status}</span>
+            <button data-redit="${r.id}" class="text-on-surface-variant hover:text-black shrink-0"><span class="material-symbols-outlined">edit</span></button>
+        </div>`).join('');
+    }
+
+    $('reviewList').addEventListener('click', (e) => { const b = e.target.closest('[data-redit]'); if (b) openReview(b.getAttribute('data-redit')); });
+    $('addReviewBtn').addEventListener('click', () => openReview(null));
+    $('reviewBackBtn').addEventListener('click', () => { hide($('reviewEditView')); show($('reviewsListView')); loadReviews(); });
+
+    document.querySelectorAll('.rStatusBtn').forEach(b => b.addEventListener('click', () => setRStatus(b.getAttribute('data-rstatus'))));
+    function setRStatus(s) {
+        rStatus = s;
+        document.querySelectorAll('.rStatusBtn').forEach(b => { const on = b.getAttribute('data-rstatus') === s; b.classList.toggle('bg-primary', on); b.classList.toggle('text-white', on); b.classList.toggle('border-primary', on); });
+    }
+
+    async function openReview(id) {
+        hide($('reviewsListView')); show($('reviewEditView')); $('reviewSaveMsg').textContent = '';
+        if (!id) { currentReview = null; $('reviewEditTitle').textContent = 'New review'; $('rAuthor').value = ''; $('rCompany').value = ''; $('rQuote').value = ''; setRStatus('published'); hide($('reviewDeleteBtn')); return; }
+        const { data } = await sb.from('reviews').select('*').eq('id', id).single();
+        currentReview = data; $('reviewEditTitle').textContent = data.author;
+        $('rAuthor').value = data.author; $('rCompany').value = data.company; $('rQuote').value = data.quote; setRStatus(data.status); show($('reviewDeleteBtn'));
+    }
+
+    $('reviewSaveBtn').addEventListener('click', async () => {
+        const author = $('rAuthor').value.trim(), quote = $('rQuote').value.trim();
+        if (!author || !quote) { $('reviewSaveMsg').textContent = 'Client name and review are required.'; $('reviewSaveMsg').className = 'text-[13px] text-error'; return; }
+        const payload = { author, company: $('rCompany').value.trim(), quote, status: rStatus };
+        $('reviewSaveMsg').textContent = 'Saving…'; $('reviewSaveMsg').className = 'text-[13px] text-on-surface-variant';
+        try {
+            if (currentReview) { await sb.from('reviews').update(payload).eq('id', currentReview.id); }
+            else { const { data: mx } = await sb.from('reviews').select('sort_order').order('sort_order', { ascending: false }).limit(1).maybeSingle(); payload.sort_order = (mx ? mx.sort_order : 0) + 1; await sb.from('reviews').insert(payload); }
+            hide($('reviewEditView')); show($('reviewsListView')); loadReviews();
+        } catch (err) { $('reviewSaveMsg').textContent = err.message; $('reviewSaveMsg').className = 'text-[13px] text-error'; }
+    });
+
+    $('reviewDeleteBtn').addEventListener('click', async () => {
+        if (!currentReview) return;
+        if (!confirm('Delete this review?')) return;
+        await sb.from('reviews').delete().eq('id', currentReview.id);
+        hide($('reviewEditView')); show($('reviewsListView')); loadReviews();
     });
 </script>
 </body>

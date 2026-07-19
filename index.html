@@ -357,6 +357,8 @@
     </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/sb.js"></script>
 <script>
     // Hero Slideshow
     const heroSlides = document.querySelectorAll('.hero-slide');
@@ -413,26 +415,35 @@
     showHeroSlide(0);
     startAutoSlide();
 
-    // Testimonial Slider (slide count derived from markup)
+    // Testimonial Slider (slide count read live so DB reviews can replace the fallback set)
     const slider = document.getElementById('testimonialSlider');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     let currentIdx = 0;
-    const totalSlides = slider.children.length;
 
     function updateSlider() {
         slider.style.transform = `translateX(-${currentIdx * 100}%)`;
     }
+    nextBtn.addEventListener('click', () => { const n = slider.children.length; currentIdx = (currentIdx + 1) % n; updateSlider(); });
+    prevBtn.addEventListener('click', () => { const n = slider.children.length; currentIdx = (currentIdx - 1 + n) % n; updateSlider(); });
 
-    nextBtn.addEventListener('click', () => {
-        currentIdx = (currentIdx + 1) % totalSlides;
-        updateSlider();
-    });
-
-    prevBtn.addEventListener('click', () => {
-        currentIdx = (currentIdx - 1 + totalSlides) % totalSlides;
-        updateSlider();
-    });
+    // Load published reviews from the database; the built-in ones stay as a fallback if unavailable.
+    const escR = (s) => (s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    (async () => {
+        try {
+            if (!window.sb) return;
+            const { data } = await window.sb.from('reviews').select('author,company,quote').eq('status', 'published').order('sort_order');
+            if (data && data.length) {
+                slider.innerHTML = data.map(r => `<div class="min-w-full md:pr-margin-desktop">
+                        <blockquote class="font-quote text-quote leading-relaxed text-white mb-12">"${escR(r.quote)}"</blockquote>
+                        <div class="font-label-caps tracking-[0.15em]">
+                            <p class="text-white font-bold uppercase">${escR(r.author)}</p>
+                            ${r.company ? `<p class="text-white/50 font-bold mt-1 text-[12px]">${escR(r.company)}</p>` : ''}
+                        </div></div>`).join('');
+                currentIdx = 0; updateSlider();
+            }
+        } catch (e) { /* keep the static fallback testimonials */ }
+    })();
 
     // Mobile menu toggle
     const menuToggle = document.getElementById('menuToggle');
