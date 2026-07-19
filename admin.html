@@ -60,6 +60,18 @@
             <h1 class="text-headline-md font-normal">Properties <span id="propCount" class="text-on-surface-variant text-[18px]"></span></h1>
             <button id="addBtn" class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 font-label-caps text-label-caps uppercase tracking-widest hover:bg-on-surface-variant transition-all duration-300"><span class="material-symbols-outlined text-[18px]">add</span>Add property</button>
         </div>
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+            <button data-filter="all" class="filterTab px-4 py-2 font-label-caps text-[11px] uppercase tracking-widest border border-black/15 transition-all">All</button>
+            <button data-filter="published" class="filterTab px-4 py-2 font-label-caps text-[11px] uppercase tracking-widest border border-black/15 transition-all">Published</button>
+            <button data-filter="draft" class="filterTab px-4 py-2 font-label-caps text-[11px] uppercase tracking-widest border border-black/15 transition-all">Drafts</button>
+        </div>
+        <div id="bulkBar" class="hidden items-center gap-3 mb-4 p-3 bg-surface-container">
+            <span id="bulkCount" class="text-[13px] font-bold"></span>
+            <button id="bulkPublish" class="px-4 py-2 font-label-caps text-[11px] uppercase tracking-widest border border-black/25 hover:bg-primary hover:text-white transition-all">Publish</button>
+            <button id="bulkDraft" class="px-4 py-2 font-label-caps text-[11px] uppercase tracking-widest border border-black/25 hover:bg-on-surface-variant hover:text-white transition-all">Unpublish</button>
+            <button id="bulkDelete" class="px-4 py-2 font-label-caps text-[11px] uppercase tracking-widest border border-error text-error hover:bg-error hover:text-white transition-all">Delete</button>
+            <button id="bulkClear" class="ml-auto text-[12px] text-on-surface-variant hover:text-black uppercase tracking-widest">Clear</button>
+        </div>
         <div id="propList" class="flex flex-col divide-y divide-black/10 border-y border-black/10"></div>
         <p id="listMsg" class="text-center text-[14px] text-on-surface-variant py-10"></p>
     </section>
@@ -105,6 +117,7 @@
 
             <div class="flex flex-wrap items-center gap-4 pt-6 border-t border-black/10">
                 <button id="saveBtn" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 font-label-caps text-label-caps uppercase tracking-widest hover:bg-on-surface-variant transition-all duration-300">Save</button>
+                <button id="previewBtn" class="hidden inline-flex items-center gap-2 border border-black/25 px-6 py-4 font-label-caps text-[12px] uppercase tracking-widest hover:bg-primary hover:text-white transition-all duration-300"><span class="material-symbols-outlined text-[18px]">visibility</span>Preview</button>
                 <button id="deleteBtn" class="hidden inline-flex items-center gap-2 border border-error text-error px-6 py-4 font-label-caps text-[12px] uppercase tracking-widest hover:bg-error hover:text-white transition-all duration-300">Delete property</button>
                 <span id="saveMsg" class="text-[13px] text-on-surface-variant"></span>
             </div>
@@ -174,6 +187,9 @@
     function showList() { show($('listView')); hide($('editView')); }
     function showEdit() { hide($('listView')); show($('editView')); }
 
+    let _filter = 'all';
+    const _selected = new Set();
+
     async function loadProperties() {
         $('listMsg').textContent = 'Loading…';
         const { data, error } = await sb.from('properties')
@@ -181,34 +197,72 @@
             .order('sort_order');
         if (error) { $('listMsg').textContent = error.message; return; }
         $('listMsg').textContent = '';
-        $('propCount').textContent = '(' + data.length + ')';
-        $('propList').innerHTML = data.map((p, i) => {
+        window._props = data; _selected.clear();
+        renderList();
+    }
+
+    function renderList() {
+        const all = window._props || [];
+        const shown = _filter === 'all' ? all : all.filter(p => p.status === _filter);
+        const pub = all.filter(p => p.status === 'published').length;
+        $('propCount').textContent = '(' + all.length + ')';
+        document.querySelectorAll('.filterTab').forEach(b => {
+            const f = b.getAttribute('data-filter'), on = f === _filter;
+            b.classList.toggle('bg-primary', on); b.classList.toggle('text-white', on); b.classList.toggle('border-primary', on);
+            b.textContent = f === 'all' ? 'All ' + all.length : (f === 'published' ? 'Published ' + pub : 'Drafts ' + (all.length - pub));
+        });
+        $('propList').innerHTML = shown.length ? shown.map((p, i) => {
             const count = (p.property_images && p.property_images[0] && p.property_images[0].count) || 0;
             const badge = p.status === 'published'
                 ? '<span class="text-[11px] font-bold uppercase tracking-widest text-on-surface">Published</span>'
                 : '<span class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant/70">Draft</span>';
-            return `<div class="flex items-center gap-4 py-4">
-                <div class="flex flex-col gap-1 mr-1">
-                    <button data-move="up" data-id="${p.id}" class="text-on-surface-variant hover:text-black ${i === 0 ? 'opacity-20 pointer-events-none' : ''}" title="Move up"><span class="material-symbols-outlined text-[18px]">keyboard_arrow_up</span></button>
-                    <button data-move="down" data-id="${p.id}" class="text-on-surface-variant hover:text-black ${i === data.length - 1 ? 'opacity-20 pointer-events-none' : ''}" title="Move down"><span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span></button>
+            const canUp = _filter === 'all' && i > 0, canDown = _filter === 'all' && i < shown.length - 1;
+            return `<div class="flex items-center gap-3 py-4">
+                <input type="checkbox" class="rowChk w-4 h-4 accent-black shrink-0" data-id="${p.id}" ${_selected.has(p.id) ? 'checked' : ''}>
+                <div class="flex flex-col gap-1 ${_filter === 'all' ? '' : 'hidden'}">
+                    <button data-move="up" data-id="${p.id}" class="text-on-surface-variant hover:text-black ${canUp ? '' : 'opacity-20 pointer-events-none'}"><span class="material-symbols-outlined text-[18px]">keyboard_arrow_up</span></button>
+                    <button data-move="down" data-id="${p.id}" class="text-on-surface-variant hover:text-black ${canDown ? '' : 'opacity-20 pointer-events-none'}"><span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span></button>
                 </div>
-                <button data-edit="${p.id}" class="flex-1 text-left">
-                    <div class="text-[18px]">${esc(p.name)}</div>
+                <button data-edit="${p.id}" class="flex-1 text-left min-w-0">
+                    <div class="text-[18px] truncate">${esc(p.name)}</div>
                     <div class="text-[13px] text-on-surface-variant">${esc(p.location)} · ${count} photo${count === 1 ? '' : 's'}</div>
                 </button>
                 ${badge}
-                <button data-edit="${p.id}" class="text-on-surface-variant hover:text-black"><span class="material-symbols-outlined">edit</span></button>
+                <button data-edit="${p.id}" class="text-on-surface-variant hover:text-black shrink-0"><span class="material-symbols-outlined">edit</span></button>
             </div>`;
-        }).join('');
-        window._props = data;
+        }).join('') : '<p class="text-center text-[14px] text-on-surface-variant py-10">Nothing here yet.</p>';
+        updateBulkBar();
     }
 
+    function updateBulkBar() {
+        const n = _selected.size;
+        $('bulkBar').classList.toggle('hidden', n === 0);
+        $('bulkBar').classList.toggle('flex', n > 0);
+        $('bulkCount').textContent = n + ' selected';
+    }
+
+    document.querySelectorAll('.filterTab').forEach(b => b.addEventListener('click', () => { _filter = b.getAttribute('data-filter'); renderList(); }));
+
+    $('propList').addEventListener('change', (e) => {
+        const chk = e.target.closest('.rowChk');
+        if (chk) { chk.checked ? _selected.add(chk.getAttribute('data-id')) : _selected.delete(chk.getAttribute('data-id')); updateBulkBar(); }
+    });
     $('propList').addEventListener('click', async (e) => {
+        if (e.target.closest('.rowChk')) return;
         const editId = e.target.closest('[data-edit]');
         const moveBtn = e.target.closest('[data-move]');
         if (editId) { openEditor(editId.getAttribute('data-edit')); return; }
         if (moveBtn) { await moveProperty(moveBtn.getAttribute('data-id'), moveBtn.getAttribute('data-move')); }
     });
+
+    async function bulkUpdate(status) { await sb.from('properties').update({ status }).in('id', [..._selected]); await loadProperties(); }
+    $('bulkPublish').addEventListener('click', () => bulkUpdate('published'));
+    $('bulkDraft').addEventListener('click', () => bulkUpdate('draft'));
+    $('bulkDelete').addEventListener('click', async () => {
+        if (!confirm('Delete ' + _selected.size + ' propert' + (_selected.size === 1 ? 'y' : 'ies') + ' and all their photos? This cannot be undone.')) return;
+        await sb.from('properties').delete().in('id', [..._selected]); await loadProperties();
+    });
+    $('bulkClear').addEventListener('click', () => { _selected.clear(); renderList(); });
 
     async function moveProperty(id, dir) {
         const props = window._props;
@@ -222,13 +276,17 @@
     }
 
     $('addBtn').addEventListener('click', () => openEditor(null));
-    $('backBtn').addEventListener('click', () => { showList(); loadProperties(); });
+    $('backBtn').addEventListener('click', () => { if (dirty && !confirm('You have unsaved changes. Discard them?')) return; dirty = false; showList(); loadProperties(); });
 
     // ---------- EDITOR ----------
     let current = null; // {id, slug, ...} or null for new
     let editStatus = 'draft';
+    let dirty = false;
 
-    document.querySelectorAll('.statusBtn').forEach(b => b.addEventListener('click', () => setStatus(b.getAttribute('data-status'))));
+    ['fName', 'fLocation', 'fDescription'].forEach(id => $(id).addEventListener('input', () => dirty = true));
+    document.querySelectorAll('.statusBtn').forEach(b => b.addEventListener('click', () => { setStatus(b.getAttribute('data-status')); dirty = true; }));
+    $('previewBtn').addEventListener('click', () => { if (current) window.open('gallery.html?p=' + encodeURIComponent(current.slug) + '&preview=1', '_blank'); });
+    window.addEventListener('beforeunload', (e) => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
     function setStatus(s) {
         editStatus = s;
         document.querySelectorAll('.statusBtn').forEach(b => {
@@ -244,7 +302,7 @@
             current = null;
             $('editTitle').textContent = 'New property';
             $('fName').value = ''; $('fLocation').value = ''; $('fDescription').value = '';
-            setStatus('draft'); hide($('deleteBtn'));
+            setStatus('draft'); hide($('deleteBtn')); hide($('previewBtn')); dirty = false;
             $('imageManager').innerHTML = ''; renderImages([]);
             return;
         }
@@ -252,7 +310,7 @@
         current = data;
         $('editTitle').textContent = data.name;
         $('fName').value = data.name; $('fLocation').value = data.location; $('fDescription').value = data.description || '';
-        setStatus(data.status); show($('deleteBtn'));
+        setStatus(data.status); show($('deleteBtn')); show($('previewBtn')); dirty = false;
         await loadImages();
     }
 
@@ -321,8 +379,8 @@
         return await new Promise(res => c.toBlob(res, 'image/jpeg', quality));
     }
 
-    $('fileInput').addEventListener('change', async (e) => {
-        const files = [...e.target.files]; e.target.value = '';
+    async function handleFiles(fileList) {
+        const files = [...fileList].filter(f => f.type.startsWith('image/'));
         if (!files.length) return;
         // Need a saved property (for slug + id) before attaching images
         if (!current) { const ok = await ensureSaved(); if (!ok) return; }
@@ -341,7 +399,16 @@
         }
         $('uploadMsg').textContent = `Uploaded ${done} photo${done === 1 ? '' : 's'}.`;
         await loadImages();
-    });
+    }
+
+    $('fileInput').addEventListener('change', (e) => { const f = [...e.target.files]; e.target.value = ''; handleFiles(f); });
+
+    // Drag-and-drop image files straight onto the photo grid
+    const dropZone = $('imageManager');
+    const isFileDrag = (e) => e.dataTransfer && [...e.dataTransfer.types].includes('Files');
+    ['dragover', 'dragenter'].forEach(ev => dropZone.addEventListener(ev, (e) => { if (!isFileDrag(e)) return; e.preventDefault(); dropZone.classList.add('ring-2', 'ring-black', 'ring-offset-2'); }));
+    dropZone.addEventListener('dragleave', (e) => { if (dropZone.contains(e.relatedTarget)) return; dropZone.classList.remove('ring-2', 'ring-black', 'ring-offset-2'); });
+    dropZone.addEventListener('drop', (e) => { if (!isFileDrag(e)) return; e.preventDefault(); dropZone.classList.remove('ring-2', 'ring-black', 'ring-offset-2'); handleFiles(e.dataTransfer.files); });
 
     // Create the property if it doesn't exist yet (so uploads have somewhere to attach)
     async function ensureSaved() {
@@ -380,6 +447,7 @@
                 if (error) throw error;
                 current = data; $('editTitle').textContent = data.name; show($('deleteBtn'));
             }
+            dirty = false;
             $('saveMsg').textContent = 'Saved.'; $('saveMsg').className = 'text-[13px] text-on-surface-variant';
             if (!silent) { setTimeout(() => { showList(); loadProperties(); }, 500); }
             return true;
