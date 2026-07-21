@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Terms of Use | Shakir Jamaldeen Photography</title>
+    <meta content="Terms of use for Shakir Jamaldeen Photography." name="description">
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body class="bg-background text-on-surface selection:bg-primary selection:text-white font-body-md">
+
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-glass-overlay backdrop-blur-xl border-b border-black/5">
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-unit max-w-container-max mx-auto h-24">
+        <a class="nav-logo text-on-surface flex items-center gap-3" href="index.html">
+            <img alt="Shakir Jamaldeen logo" class="h-11 w-auto object-contain" src="images/logo.png">
+            <span class="hidden sm:block font-bold text-[13px] md:text-[15px] tracking-[0.08em] lowercase">shakir jamaldeen photography</span>
+        </a>
+        <div class="hidden md:flex items-center gap-12 font-label-caps text-label-caps tracking-widest lowercase">
+            <a class="text-secondary hover:text-primary transition-colors bracket-link" href="portfolio.html">portfolio</a>
+            <a class="text-secondary hover:text-primary transition-colors bracket-link" href="about.html">about</a>
+            <a class="text-secondary hover:text-primary transition-colors bracket-link" href="about.html#contact">contact</a>
+        </div>
+        <button aria-label="Toggle Menu" class="md:hidden p-2" id="menuToggle">
+            <span class="material-symbols-outlined text-[32px]">menu</span>
+        </button>
+    </div>
+    <div class="hidden md:hidden bg-glass-overlay backdrop-blur-xl border-b border-black/5" id="mobileMenu">
+        <div class="flex flex-col gap-8 px-margin-mobile py-10 font-label-caps text-label-caps tracking-widest lowercase">
+            <a class="text-secondary" href="portfolio.html">portfolio</a>
+            <a class="text-secondary" href="about.html">about</a>
+            <a class="text-secondary" href="about.html#contact">contact</a>
+        </div>
+    </div>
+</nav>
+
+<main class="pt-40 pb-24 px-margin-mobile md:px-margin-desktop max-w-3xl mx-auto">
+    <h1 class="text-display-lg-mobile md:text-headline-md font-normal mb-4 tracking-tight">Terms of use</h1>
+    <p class="text-[14px] text-on-surface-variant mb-12">Last updated: July 2026</p>
+
+    <div class="space-y-10 text-[16px] leading-relaxed text-on-surface/90">
+        <p>These terms govern your use of the Shakir Jamaldeen Photography website. By accessing or using this site, you agree to them.</p>
+
+        <div>
+            <h2 class="font-bold text-[18px] mb-3">Intellectual property</h2>
+            <p>All photographs, images and content on this website are the property of Shakir Jamaldeen and are protected by copyright. You may not copy, reproduce, download, republish or use any image or content for commercial or personal purposes without prior written permission.</p>
+        </div>
+
+        <div>
+            <h2 class="font-bold text-[18px] mb-3">Use of the website</h2>
+            <p>This website is provided for viewing our portfolio and making enquiries. You agree not to use it in any way that is unlawful, or that could damage, disable or impair the site.</p>
+        </div>
+
+        <div>
+            <h2 class="font-bold text-[18px] mb-3">Enquiries and quotations</h2>
+            <p>Information on this site is for general presentation only and does not constitute a binding offer. Any project scope, pricing, schedule and licensing of images are agreed separately in writing before work begins.</p>
+        </div>
+
+        <div>
+            <h2 class="font-bold text-[18px] mb-3">Accuracy</h2>
+            <p>We aim to keep the information on this site accurate and up to date, but we make no warranties as to its completeness or accuracy and are not liable for any reliance placed on it.</p>
+        </div>
+
+        <div>
+            <h2 class="font-bold text-[18px] mb-3">External links</h2>
+            <p>This site may link to third-party websites (such as social media). We are not responsible for the content or practices of those sites.</p>
+        </div>
+
+        <div>
+            <h2 class="font-bold text-[18px] mb-3">Contact</h2>
+            <p>For permissions, licensing or any questions about these terms, contact Shakir Jamaldeen at <a class="underline hover:text-black" href="mailto:shakir.jamaldeen@gmail.com">shakir.jamaldeen@gmail.com</a> or +94 77 753 6266.</p>
+        </div>
+
+        <p class="text-[14px] text-on-surface-variant border-t border-black/10 pt-8">This is a general template provided for review. Please have it checked against your specific legal requirements before publishing to real visitors.</p>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-canvas-off-white pt-16 pb-12 border-t border-black/5">
+    <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <p class="tracking-[0.12em] text-[12px] text-on-surface-variant">© 2026 Shakir Jamaldeen Photography. All rights reserved.</p>
+            <div class="flex items-center gap-6 font-label-caps text-[12px] tracking-[0.12em] text-on-surface-variant">
+                <a class="hover:text-black transition-colors" href="privacy.html">Privacy policy</a>
+                <a class="hover:text-black transition-colors" href="terms.html">Terms of use</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+</script>
+</body>
+</html>
