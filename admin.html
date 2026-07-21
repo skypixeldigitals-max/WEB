@@ -95,6 +95,14 @@
                 <input id="fLocation" type="text" placeholder="e.g. Galle, Sri Lanka" class="w-full bg-transparent border-b border-black/25 pb-3 text-[16px] focus:border-black focus:outline-none transition-colors">
             </div>
             <div>
+                <label class="block font-label-caps text-[12px] text-on-surface-variant tracking-[0.2em] font-bold uppercase mb-2">Category (used by the portfolio filter)</label>
+                <select id="fCategory" class="w-full bg-transparent border-b border-black/25 pb-3 text-[16px] focus:border-black focus:outline-none transition-colors">
+                    <option value="">Uncategorized</option>
+                    <option value="Resorts & Hotels">Resorts &amp; Hotels</option>
+                    <option value="Villas & Private Homes">Villas &amp; Private Homes</option>
+                </select>
+            </div>
+            <div>
                 <label class="block font-label-caps text-[12px] text-on-surface-variant tracking-[0.2em] font-bold uppercase mb-2">Description (optional)</label>
                 <textarea id="fDescription" rows="3" placeholder="A short note about the property or shoot" class="w-full bg-transparent border-b border-black/25 pb-3 text-[16px] focus:border-black focus:outline-none transition-colors resize-none"></textarea>
             </div>
@@ -330,7 +338,8 @@
     let editStatus = 'draft';
     let dirty = false;
 
-    ['fName', 'fLocation', 'fDescription'].forEach(id => $(id).addEventListener('input', () => dirty = true));
+    ['fName', 'fLocation', 'fDescription', 'fCategory'].forEach(id => $(id).addEventListener('input', () => dirty = true));
+    $('fCategory').addEventListener('change', () => dirty = true);
     document.querySelectorAll('.statusBtn').forEach(b => b.addEventListener('click', () => { setStatus(b.getAttribute('data-status')); dirty = true; }));
     $('previewBtn').addEventListener('click', () => { if (current) window.open('gallery.html?p=' + encodeURIComponent(current.slug) + '&preview=1', '_blank'); });
     window.addEventListener('beforeunload', (e) => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
@@ -348,7 +357,7 @@
         if (!id) {
             current = null;
             $('editTitle').textContent = 'New property';
-            $('fName').value = ''; $('fLocation').value = ''; $('fDescription').value = '';
+            $('fName').value = ''; $('fLocation').value = ''; $('fDescription').value = ''; $('fCategory').value = '';
             setStatus('draft'); hide($('deleteBtn')); hide($('previewBtn')); dirty = false;
             $('imageManager').innerHTML = ''; renderImages([]);
             return;
@@ -356,7 +365,7 @@
         const { data } = await sb.from('properties').select('*').eq('id', id).single();
         current = data;
         $('editTitle').textContent = data.name;
-        $('fName').value = data.name; $('fLocation').value = data.location; $('fDescription').value = data.description || '';
+        $('fName').value = data.name; $('fLocation').value = data.location; $('fDescription').value = data.description || ''; $('fCategory').value = data.category || '';
         setStatus(data.status); show($('deleteBtn')); show($('previewBtn')); dirty = false;
         await loadImages();
     }
@@ -480,7 +489,7 @@
     async function saveProperty(silent) {
         const name = $('fName').value.trim();
         if (!name) { $('saveMsg').textContent = 'Name is required.'; $('saveMsg').className = 'text-[13px] text-error'; return false; }
-        const payload = { name, location: $('fLocation').value.trim(), description: $('fDescription').value.trim(), status: editStatus };
+        const payload = { name, location: $('fLocation').value.trim(), category: $('fCategory').value, description: $('fDescription').value.trim(), status: editStatus };
         $('saveMsg').textContent = 'Saving…'; $('saveMsg').className = 'text-[13px] text-on-surface-variant';
         try {
             if (current) {

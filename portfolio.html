@@ -57,8 +57,17 @@
 
 <!-- Portfolio Sections (loaded from the database) -->
 <main class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto pb-24 md:pb-section-gap">
+    <!-- Filters + search (built once the projects load) -->
+    <div id="portfolioControls" class="hidden flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16 pb-8 border-b border-black/10">
+        <div id="filterTabs" class="flex flex-wrap gap-x-8 gap-y-3 font-label-caps text-label-caps tracking-widest"></div>
+        <div class="relative w-full md:w-64 shrink-0">
+            <span class="material-symbols-outlined absolute left-0 top-1/2 -translate-y-1/2 text-[20px] text-secondary">search</span>
+            <input id="portfolioSearch" type="search" placeholder="search projects" aria-label="Search projects" class="w-full bg-transparent border-b border-black/20 focus:border-primary outline-none py-2 pl-7 text-[15px] placeholder:text-secondary transition-colors">
+        </div>
+    </div>
     <div id="portfolioList" class="space-y-16 md:space-y-20"></div>
     <p id="portfolioLoading" class="font-body-md text-body-md text-secondary py-24 text-center">Loading projects…</p>
+    <p id="portfolioEmpty" class="hidden font-body-md text-body-md text-secondary py-24 text-center">No projects match your search.</p>
     <p id="portfolioError" class="hidden font-body-md text-body-md text-secondary py-24 text-center">Couldn't load projects right now. Please refresh the page.</p>
 </main>
 
@@ -120,10 +129,14 @@
     (async () => {
         const list = document.getElementById('portfolioList');
         const loading = document.getElementById('portfolioLoading');
+        const controls = document.getElementById('portfolioControls');
+        const tabsWrap = document.getElementById('filterTabs');
+        const searchInput = document.getElementById('portfolioSearch');
+        const emptyMsg = document.getElementById('portfolioEmpty');
         try {
             const { data, error } = await sb
                 .from('properties')
-                .select('slug,name,location,property_images(url,sort_order)')
+                .select('slug,name,location,category,property_images(url,sort_order)')
                 .eq('status', 'published')
                 .order('sort_order');
             if (error) throw error;
@@ -139,7 +152,7 @@
                         <img class="w-full h-full object-cover" loading="lazy" alt="${esc(p.name)}" src="${esc(im.url)}">
                     </a>`).join('');
                 const rightSidebar = i % 2 === 1 ? ' md:order-last' : '';
-                return `<section class="project-section grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start scroll-mt-32" id="${esc(p.slug)}">
+                return `<section class="project-section grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start scroll-mt-32" id="${esc(p.slug)}" data-name="${esc((p.name || '').toLowerCase())}" data-location="${esc((p.location || '').toLowerCase())}" data-category="${esc(p.category || '')}">
                     <div class="md:col-span-4${rightSidebar} md:sticky md:top-32">
                         <h2 class="text-headline-md font-normal mb-3">${esc(p.name)}</h2>
                         <p class="font-label-caps text-[12px] text-on-surface-variant tracking-[0.2em] font-bold mb-6">${esc(p.location)}</p>
@@ -148,6 +161,50 @@
                     <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">${tiles}</div>
                 </section>`;
             }).join('');
+
+            // ---- Filters + search ----
+            const sections = Array.from(list.querySelectorAll('.project-section'));
+            // Build the tab set from the categories actually present.
+            const cats = [];
+            data.forEach(p => { if (p.category && !cats.includes(p.category)) cats.push(p.category); });
+            cats.sort();
+            const tabDefs = [{ key: 'all', label: 'All' }].concat(cats.map(c => ({ key: c, label: c })));
+            let activeCat = 'all', query = '';
+
+            function count(key) {
+                return sections.filter(s => key === 'all' || s.dataset.category === key).length;
+            }
+            tabsWrap.innerHTML = tabDefs.map(t =>
+                `<button type="button" class="filter-tab pb-1 border-b-2 transition-colors ${t.key === 'all' ? 'border-primary text-primary' : 'border-transparent text-secondary hover:text-primary'}" data-cat="${esc(t.key)}">${esc(t.label)} <span class="text-secondary/70">(${count(t.key)})</span></button>`
+            ).join('');
+            const tabBtns = Array.from(tabsWrap.querySelectorAll('.filter-tab'));
+
+            function apply() {
+                let shown = 0;
+                sections.forEach(s => {
+                    const okCat = activeCat === 'all' || s.dataset.category === activeCat;
+                    const okQ = !query || s.dataset.name.includes(query) || s.dataset.location.includes(query);
+                    const show = okCat && okQ;
+                    s.classList.toggle('hidden', !show);
+                    if (show) shown++;
+                });
+                emptyMsg.classList.toggle('hidden', shown !== 0);
+            }
+            tabBtns.forEach(btn => btn.addEventListener('click', () => {
+                activeCat = btn.dataset.cat;
+                tabBtns.forEach(b => {
+                    const on = b === btn;
+                    b.classList.toggle('border-primary', on);
+                    b.classList.toggle('text-primary', on);
+                    b.classList.toggle('border-transparent', !on);
+                    b.classList.toggle('text-secondary', !on);
+                });
+                apply();
+            }));
+            searchInput.addEventListener('input', () => { query = searchInput.value.trim().toLowerCase(); apply(); });
+
+            // Only show filters when there's more than one category to choose from.
+            if (cats.length > 1) controls.classList.remove('hidden');
         } catch (e) {
             console.error(e);
             loading.classList.add('hidden');
