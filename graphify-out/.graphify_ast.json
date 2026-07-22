@@ -1,0 +1,1981 @@
+{
+  "nodes": [
+    {
+      "id": "js_gallery_data",
+      "label": "gallery-data.js",
+      "file_type": "code",
+      "source_file": "js/gallery-data.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "js_sb",
+      "label": "sb.js",
+      "file_type": "code",
+      "source_file": "js/sb.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "package",
+      "label": "package.json",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_name",
+      "label": "name",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_version",
+      "label": "version",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_description",
+      "label": "description",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_main",
+      "label": "main",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_scripts_test",
+      "label": "test",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_keywords",
+      "label": "keywords",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_author",
+      "label": "author",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_license",
+      "label": "license",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_type",
+      "label": "type",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_devdependencies",
+      "label": "devDependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L13",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_devdependencies_sharp",
+      "label": "sharp",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "_origin": "ast"
+    },
+    {
+      "id": "sharp",
+      "label": "sharp",
+      "file_type": "concept",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "_origin": "ast"
+    },
+    {
+      "id": "package_devdependencies_tailwindcss",
+      "label": "tailwindcss",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "_origin": "ast"
+    },
+    {
+      "id": "tailwindcss",
+      "label": "tailwindcss",
+      "file_type": "concept",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_build_portfolio",
+      "label": "build-portfolio.js",
+      "file_type": "code",
+      "source_file": "scripts/build-portfolio.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_build_portfolio_fs",
+      "label": "fs",
+      "file_type": "code",
+      "source_file": "scripts/build-portfolio.js",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_build_portfolio_path",
+      "label": "path",
+      "file_type": "code",
+      "source_file": "scripts/build-portfolio.js",
+      "source_location": "L5",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_build_portfolio_manifest",
+      "label": "manifest",
+      "file_type": "code",
+      "source_file": "scripts/build-portfolio.js",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_build_portfolio_galleryjs",
+      "label": "galleryJs",
+      "file_type": "code",
+      "source_file": "scripts/build-portfolio.js",
+      "source_location": "L9",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_build_portfolio_galleries",
+      "label": "GALLERIES",
+      "file_type": "code",
+      "source_file": "scripts/build-portfolio.js",
+      "source_location": "L10",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_build_portfolio_esc",
+      "label": "esc()",
+      "file_type": "code",
+      "source_file": "scripts/build-portfolio.js",
+      "source_location": "L12",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_build_portfolio_sections",
+      "label": "sections",
+      "file_type": "code",
+      "source_file": "scripts/build-portfolio.js",
+      "source_location": "L14",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_contact_sheet",
+      "label": "contact-sheet.js",
+      "file_type": "code",
+      "source_file": "scripts/contact-sheet.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_contact_sheet_sharp",
+      "label": "sharp",
+      "file_type": "code",
+      "source_file": "scripts/contact-sheet.js",
+      "source_location": "L2",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_contact_sheet_fs",
+      "label": "fs",
+      "file_type": "code",
+      "source_file": "scripts/contact-sheet.js",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_contact_sheet_path",
+      "label": "path",
+      "file_type": "code",
+      "source_file": "scripts/contact-sheet.js",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_contact_sheet_out",
+      "label": "OUT",
+      "file_type": "code",
+      "source_file": "scripts/contact-sheet.js",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_contact_sheet_files",
+      "label": "files",
+      "file_type": "code",
+      "source_file": "scripts/contact-sheet.js",
+      "source_location": "L9",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_contact_sheet_rows",
+      "label": "rows",
+      "file_type": "code",
+      "source_file": "scripts/contact-sheet.js",
+      "source_location": "L14",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_copy_tweaks",
+      "label": "copy-tweaks.js",
+      "file_type": "code",
+      "source_file": "scripts/copy-tweaks.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_copy_tweaks_fs",
+      "label": "fs",
+      "file_type": "code",
+      "source_file": "scripts/copy-tweaks.js",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_copy_tweaks_path",
+      "label": "path",
+      "file_type": "code",
+      "source_file": "scripts/copy-tweaks.js",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_copy_tweaks_dir",
+      "label": "dir",
+      "file_type": "code",
+      "source_file": "scripts/copy-tweaks.js",
+      "source_location": "L5",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_copy_tweaks_files",
+      "label": "files",
+      "file_type": "code",
+      "source_file": "scripts/copy-tweaks.js",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_copy_tweaks_repl",
+      "label": "repl",
+      "file_type": "code",
+      "source_file": "scripts/copy-tweaks.js",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_dash_and_buttons",
+      "label": "dash-and-buttons.js",
+      "file_type": "code",
+      "source_file": "scripts/dash-and-buttons.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_dash_and_buttons_fs",
+      "label": "fs",
+      "file_type": "code",
+      "source_file": "scripts/dash-and-buttons.js",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_dash_and_buttons_path",
+      "label": "path",
+      "file_type": "code",
+      "source_file": "scripts/dash-and-buttons.js",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_dash_and_buttons_dir",
+      "label": "dir",
+      "file_type": "code",
+      "source_file": "scripts/dash-and-buttons.js",
+      "source_location": "L5",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_dash_and_buttons_files",
+      "label": "files",
+      "file_type": "code",
+      "source_file": "scripts/dash-and-buttons.js",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_dash_and_buttons_repl",
+      "label": "repl",
+      "file_type": "code",
+      "source_file": "scripts/dash-and-buttons.js",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_gen_seed",
+      "label": "gen-seed.js",
+      "file_type": "code",
+      "source_file": "scripts/gen-seed.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_gen_seed_fs",
+      "label": "fs",
+      "file_type": "code",
+      "source_file": "scripts/gen-seed.js",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_gen_seed_path",
+      "label": "path",
+      "file_type": "code",
+      "source_file": "scripts/gen-seed.js",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_gen_seed_galleryjs",
+      "label": "galleryJs",
+      "file_type": "code",
+      "source_file": "scripts/gen-seed.js",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_gen_seed_window",
+      "label": "window",
+      "file_type": "code",
+      "source_file": "scripts/gen-seed.js",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_gen_seed_meta",
+      "label": "META",
+      "file_type": "code",
+      "source_file": "scripts/gen-seed.js",
+      "source_location": "L13",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_gen_seed_esc",
+      "label": "esc()",
+      "file_type": "code",
+      "source_file": "scripts/gen-seed.js",
+      "source_location": "L33",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_gen_seed_proprows",
+      "label": "propRows",
+      "file_type": "code",
+      "source_file": "scripts/gen-seed.js",
+      "source_location": "L35",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_gen_seed_imgvals",
+      "label": "imgVals",
+      "file_type": "code",
+      "source_file": "scripts/gen-seed.js",
+      "source_location": "L39",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_logo",
+      "label": "logo.js",
+      "file_type": "code",
+      "source_file": "scripts/logo.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_logo_sharp",
+      "label": "sharp",
+      "file_type": "code",
+      "source_file": "scripts/logo.js",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_logo_path",
+      "label": "path",
+      "file_type": "code",
+      "source_file": "scripts/logo.js",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_logo_out",
+      "label": "OUT",
+      "file_type": "code",
+      "source_file": "scripts/logo.js",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_optimize_galleries",
+      "label": "optimize-galleries.js",
+      "file_type": "code",
+      "source_file": "scripts/optimize-galleries.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_optimize_galleries_sharp",
+      "label": "sharp",
+      "file_type": "code",
+      "source_file": "scripts/optimize-galleries.js",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_optimize_galleries_fs",
+      "label": "fs",
+      "file_type": "code",
+      "source_file": "scripts/optimize-galleries.js",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_optimize_galleries_path",
+      "label": "path",
+      "file_type": "code",
+      "source_file": "scripts/optimize-galleries.js",
+      "source_location": "L5",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_optimize_galleries_out_root",
+      "label": "OUT_ROOT",
+      "file_type": "code",
+      "source_file": "scripts/optimize-galleries.js",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_optimize_galleries_js_out",
+      "label": "JS_OUT",
+      "file_type": "code",
+      "source_file": "scripts/optimize-galleries.js",
+      "source_location": "L9",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_optimize_galleries_properties",
+      "label": "PROPERTIES",
+      "file_type": "code",
+      "source_file": "scripts/optimize-galleries.js",
+      "source_location": "L12",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_optimize_heroes",
+      "label": "optimize-heroes.js",
+      "file_type": "code",
+      "source_file": "scripts/optimize-heroes.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_optimize_heroes_sharp",
+      "label": "sharp",
+      "file_type": "code",
+      "source_file": "scripts/optimize-heroes.js",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_optimize_heroes_path",
+      "label": "path",
+      "file_type": "code",
+      "source_file": "scripts/optimize-heroes.js",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_optimize_heroes_out",
+      "label": "OUT",
+      "file_type": "code",
+      "source_file": "scripts/optimize-heroes.js",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_optimize_heroes_order",
+      "label": "ORDER",
+      "file_type": "code",
+      "source_file": "scripts/optimize-heroes.js",
+      "source_location": "L10",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_optimize_portfolio",
+      "label": "optimize-portfolio.js",
+      "file_type": "code",
+      "source_file": "scripts/optimize-portfolio.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_optimize_portfolio_sharp",
+      "label": "sharp",
+      "file_type": "code",
+      "source_file": "scripts/optimize-portfolio.js",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_optimize_portfolio_fs",
+      "label": "fs",
+      "file_type": "code",
+      "source_file": "scripts/optimize-portfolio.js",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_optimize_portfolio_path",
+      "label": "path",
+      "file_type": "code",
+      "source_file": "scripts/optimize-portfolio.js",
+      "source_location": "L5",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_optimize_portfolio_out",
+      "label": "OUT",
+      "file_type": "code",
+      "source_file": "scripts/optimize-portfolio.js",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_optimize_portfolio_properties",
+      "label": "PROPERTIES",
+      "file_type": "code",
+      "source_file": "scripts/optimize-portfolio.js",
+      "source_location": "L12",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_optimize",
+      "label": "optimize.js",
+      "file_type": "code",
+      "source_file": "scripts/optimize.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_optimize_sharp",
+      "label": "sharp",
+      "file_type": "code",
+      "source_file": "scripts/optimize.js",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_optimize_path",
+      "label": "path",
+      "file_type": "code",
+      "source_file": "scripts/optimize.js",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_optimize_out",
+      "label": "OUT",
+      "file_type": "code",
+      "source_file": "scripts/optimize.js",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_optimize_map",
+      "label": "MAP",
+      "file_type": "code",
+      "source_file": "scripts/optimize.js",
+      "source_location": "L12",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_property_sheets",
+      "label": "property-sheets.js",
+      "file_type": "code",
+      "source_file": "scripts/property-sheets.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_property_sheets_sharp",
+      "label": "sharp",
+      "file_type": "code",
+      "source_file": "scripts/property-sheets.js",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_property_sheets_fs",
+      "label": "fs",
+      "file_type": "code",
+      "source_file": "scripts/property-sheets.js",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_property_sheets_path",
+      "label": "path",
+      "file_type": "code",
+      "source_file": "scripts/property-sheets.js",
+      "source_location": "L5",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_property_sheets_out_dir",
+      "label": "OUT_DIR",
+      "file_type": "code",
+      "source_file": "scripts/property-sheets.js",
+      "source_location": "L8",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_property_sheets_all_folders",
+      "label": "ALL_FOLDERS",
+      "file_type": "code",
+      "source_file": "scripts/property-sheets.js",
+      "source_location": "L11",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_property_sheets_groups",
+      "label": "groups",
+      "file_type": "code",
+      "source_file": "scripts/property-sheets.js",
+      "source_location": "L16",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_property_sheets_buildsheet",
+      "label": "buildSheet()",
+      "file_type": "code",
+      "source_file": "scripts/property-sheets.js",
+      "source_location": "L25",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_tweaks3",
+      "label": "tweaks3.js",
+      "file_type": "code",
+      "source_file": "scripts/tweaks3.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_tweaks3_fs",
+      "label": "fs",
+      "file_type": "code",
+      "source_file": "scripts/tweaks3.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_tweaks3_path",
+      "label": "path",
+      "file_type": "code",
+      "source_file": "scripts/tweaks3.js",
+      "source_location": "L2",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_tweaks3_dir",
+      "label": "dir",
+      "file_type": "code",
+      "source_file": "scripts/tweaks3.js",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_update_portfolio_copy",
+      "label": "update-portfolio-copy.js",
+      "file_type": "code",
+      "source_file": "scripts/update-portfolio-copy.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_update_portfolio_copy_fs",
+      "label": "fs",
+      "file_type": "code",
+      "source_file": "scripts/update-portfolio-copy.js",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_update_portfolio_copy_path",
+      "label": "path",
+      "file_type": "code",
+      "source_file": "scripts/update-portfolio-copy.js",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_update_portfolio_copy_file",
+      "label": "FILE",
+      "file_type": "code",
+      "source_file": "scripts/update-portfolio-copy.js",
+      "source_location": "L5",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_update_portfolio_copy_html",
+      "label": "html",
+      "file_type": "code",
+      "source_file": "scripts/update-portfolio-copy.js",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "scripts_update_portfolio_copy_sub",
+      "label": "SUB",
+      "file_type": "code",
+      "source_file": "scripts/update-portfolio-copy.js",
+      "source_location": "L18",
+      "_origin": "ast"
+    },
+    {
+      "id": "tailwind_config",
+      "label": "tailwind.config.js",
+      "file_type": "code",
+      "source_file": "tailwind.config.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    }
+  ],
+  "edges": [
+    {
+      "source": "package",
+      "target": "package_name",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "package",
+      "target": "package_version",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "package",
+      "target": "package_description",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "package",
+      "target": "package_main",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "package",
+      "target": "package_scripts",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "package_scripts",
+      "target": "package_scripts_test",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "package",
+      "target": "package_keywords",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "package",
+      "target": "package_author",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "package",
+      "target": "package_license",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "package",
+      "target": "package_type",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "package",
+      "target": "package_devdependencies",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_sharp",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "package_devdependencies_sharp",
+      "target": "sharp",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "context": "import",
+      "_origin": "ast"
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_tailwindcss",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "package_devdependencies_tailwindcss",
+      "target": "tailwindcss",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "context": "import",
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_build_portfolio",
+      "target": "ref_fs",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/build-portfolio.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_build_portfolio",
+      "target": "scripts_build_portfolio_fs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/build-portfolio.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_build_portfolio",
+      "target": "ref_path",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/build-portfolio.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_build_portfolio",
+      "target": "scripts_build_portfolio_path",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/build-portfolio.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_build_portfolio",
+      "target": "scripts_build_portfolio_manifest",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/build-portfolio.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_build_portfolio",
+      "target": "scripts_build_portfolio_galleryjs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/build-portfolio.js",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_build_portfolio",
+      "target": "scripts_build_portfolio_galleries",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/build-portfolio.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_build_portfolio",
+      "target": "scripts_build_portfolio_esc",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/build-portfolio.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_build_portfolio",
+      "target": "scripts_build_portfolio_sections",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/build-portfolio.js",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_contact_sheet",
+      "target": "ref_sharp",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/contact-sheet.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_contact_sheet",
+      "target": "scripts_contact_sheet_sharp",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/contact-sheet.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_contact_sheet",
+      "target": "ref_fs",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/contact-sheet.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_contact_sheet",
+      "target": "scripts_contact_sheet_fs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/contact-sheet.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_contact_sheet",
+      "target": "ref_path",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/contact-sheet.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_contact_sheet",
+      "target": "scripts_contact_sheet_path",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/contact-sheet.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_contact_sheet",
+      "target": "scripts_contact_sheet_out",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/contact-sheet.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_contact_sheet",
+      "target": "scripts_contact_sheet_files",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/contact-sheet.js",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_contact_sheet",
+      "target": "scripts_contact_sheet_rows",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/contact-sheet.js",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_copy_tweaks",
+      "target": "ref_fs",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/copy-tweaks.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_copy_tweaks",
+      "target": "scripts_copy_tweaks_fs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/copy-tweaks.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_copy_tweaks",
+      "target": "ref_path",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/copy-tweaks.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_copy_tweaks",
+      "target": "scripts_copy_tweaks_path",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/copy-tweaks.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_copy_tweaks",
+      "target": "scripts_copy_tweaks_dir",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/copy-tweaks.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_copy_tweaks",
+      "target": "scripts_copy_tweaks_files",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/copy-tweaks.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_copy_tweaks",
+      "target": "scripts_copy_tweaks_repl",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/copy-tweaks.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_dash_and_buttons",
+      "target": "ref_fs",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dash-and-buttons.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_dash_and_buttons",
+      "target": "scripts_dash_and_buttons_fs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dash-and-buttons.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_dash_and_buttons",
+      "target": "ref_path",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dash-and-buttons.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_dash_and_buttons",
+      "target": "scripts_dash_and_buttons_path",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dash-and-buttons.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_dash_and_buttons",
+      "target": "scripts_dash_and_buttons_dir",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dash-and-buttons.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_dash_and_buttons",
+      "target": "scripts_dash_and_buttons_files",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dash-and-buttons.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_dash_and_buttons",
+      "target": "scripts_dash_and_buttons_repl",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dash-and-buttons.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_gen_seed",
+      "target": "ref_fs",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gen-seed.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_gen_seed",
+      "target": "scripts_gen_seed_fs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gen-seed.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_gen_seed",
+      "target": "ref_path",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gen-seed.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_gen_seed",
+      "target": "scripts_gen_seed_path",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gen-seed.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_gen_seed",
+      "target": "scripts_gen_seed_galleryjs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gen-seed.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_gen_seed",
+      "target": "scripts_gen_seed_window",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gen-seed.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_gen_seed",
+      "target": "scripts_gen_seed_meta",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gen-seed.js",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_gen_seed",
+      "target": "scripts_gen_seed_esc",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gen-seed.js",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_gen_seed",
+      "target": "scripts_gen_seed_proprows",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gen-seed.js",
+      "source_location": "L35",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_gen_seed",
+      "target": "scripts_gen_seed_imgvals",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/gen-seed.js",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_logo",
+      "target": "ref_sharp",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/logo.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_logo",
+      "target": "scripts_logo_sharp",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/logo.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_logo",
+      "target": "ref_path",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/logo.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_logo",
+      "target": "scripts_logo_path",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/logo.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_logo",
+      "target": "scripts_logo_out",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/logo.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize_galleries",
+      "target": "ref_sharp",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize-galleries.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize_galleries",
+      "target": "scripts_optimize_galleries_sharp",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize-galleries.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize_galleries",
+      "target": "ref_fs",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize-galleries.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize_galleries",
+      "target": "scripts_optimize_galleries_fs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize-galleries.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize_galleries",
+      "target": "ref_path",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize-galleries.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize_galleries",
+      "target": "scripts_optimize_galleries_path",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize-galleries.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize_galleries",
+      "target": "scripts_optimize_galleries_out_root",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize-galleries.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize_galleries",
+      "target": "scripts_optimize_galleries_js_out",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize-galleries.js",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize_galleries",
+      "target": "scripts_optimize_galleries_properties",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize-galleries.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize_heroes",
+      "target": "ref_sharp",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize-heroes.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize_heroes",
+      "target": "scripts_optimize_heroes_sharp",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize-heroes.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize_heroes",
+      "target": "ref_path",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize-heroes.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize_heroes",
+      "target": "scripts_optimize_heroes_path",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize-heroes.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize_heroes",
+      "target": "scripts_optimize_heroes_out",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize-heroes.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize_heroes",
+      "target": "scripts_optimize_heroes_order",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize-heroes.js",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize_portfolio",
+      "target": "ref_sharp",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize-portfolio.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize_portfolio",
+      "target": "scripts_optimize_portfolio_sharp",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize-portfolio.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize_portfolio",
+      "target": "ref_fs",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize-portfolio.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize_portfolio",
+      "target": "scripts_optimize_portfolio_fs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize-portfolio.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize_portfolio",
+      "target": "ref_path",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize-portfolio.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize_portfolio",
+      "target": "scripts_optimize_portfolio_path",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize-portfolio.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize_portfolio",
+      "target": "scripts_optimize_portfolio_out",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize-portfolio.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize_portfolio",
+      "target": "scripts_optimize_portfolio_properties",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize-portfolio.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize",
+      "target": "ref_sharp",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize",
+      "target": "scripts_optimize_sharp",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize",
+      "target": "ref_path",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize",
+      "target": "scripts_optimize_path",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize",
+      "target": "scripts_optimize_out",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_optimize",
+      "target": "scripts_optimize_map",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/optimize.js",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_property_sheets",
+      "target": "ref_sharp",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/property-sheets.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_property_sheets",
+      "target": "scripts_property_sheets_sharp",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/property-sheets.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_property_sheets",
+      "target": "ref_fs",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/property-sheets.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_property_sheets",
+      "target": "scripts_property_sheets_fs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/property-sheets.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_property_sheets",
+      "target": "ref_path",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/property-sheets.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_property_sheets",
+      "target": "scripts_property_sheets_path",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/property-sheets.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_property_sheets",
+      "target": "scripts_property_sheets_out_dir",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/property-sheets.js",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_property_sheets",
+      "target": "scripts_property_sheets_all_folders",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/property-sheets.js",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_property_sheets",
+      "target": "scripts_property_sheets_groups",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/property-sheets.js",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_property_sheets",
+      "target": "scripts_property_sheets_buildsheet",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/property-sheets.js",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_property_sheets_buildsheet",
+      "target": "scripts_property_sheets_sharp",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/property-sheets.js",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_tweaks3",
+      "target": "ref_fs",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tweaks3.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_tweaks3",
+      "target": "scripts_tweaks3_fs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tweaks3.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_tweaks3",
+      "target": "ref_path",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tweaks3.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_tweaks3",
+      "target": "scripts_tweaks3_path",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tweaks3.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_tweaks3",
+      "target": "scripts_tweaks3_dir",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/tweaks3.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_update_portfolio_copy",
+      "target": "ref_fs",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/update-portfolio-copy.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_update_portfolio_copy",
+      "target": "scripts_update_portfolio_copy_fs",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/update-portfolio-copy.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_update_portfolio_copy",
+      "target": "ref_path",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/update-portfolio-copy.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_update_portfolio_copy",
+      "target": "scripts_update_portfolio_copy_path",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/update-portfolio-copy.js",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_update_portfolio_copy",
+      "target": "scripts_update_portfolio_copy_file",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/update-portfolio-copy.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_update_portfolio_copy",
+      "target": "scripts_update_portfolio_copy_html",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/update-portfolio-copy.js",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "scripts_update_portfolio_copy",
+      "target": "scripts_update_portfolio_copy_sub",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/update-portfolio-copy.js",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}
