@@ -58,10 +58,10 @@
 </header>
 
 <!-- Portfolio Sections (loaded from the database) -->
-<main class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto pb-16 md:pb-20">
+<main class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto pb-16 md:pb-20 min-h-screen">
     <!-- Filters + search (built once the projects load) -->
-    <div id="portfolioControls" class="hidden flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-12 pb-6 border-b border-black/10">
-        <div id="filterTabs" class="flex flex-nowrap md:flex-wrap gap-x-3 sm:gap-x-8 gap-y-3 font-label-caps text-[11px] sm:text-label-caps tracking-[0.06em] sm:tracking-widest whitespace-nowrap overflow-x-auto"></div>
+    <div id="portfolioControls" class="invisible flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-12 pb-6 border-b border-black/10">
+        <div id="filterTabs" class="min-h-[1.5rem] flex flex-nowrap md:flex-wrap gap-x-3 sm:gap-x-8 gap-y-3 font-label-caps text-[11px] sm:text-label-caps tracking-[0.06em] sm:tracking-widest whitespace-nowrap overflow-x-auto"></div>
         <div class="relative w-full md:w-64 shrink-0">
             <span class="material-symbols-outlined absolute left-0 top-1/2 -translate-y-1/2 text-[20px] text-secondary">search</span>
             <input id="portfolioSearch" type="search" placeholder="search projects" aria-label="Search projects" class="w-full bg-transparent border-b border-black/20 focus:border-primary outline-none py-2 pl-7 text-[15px] placeholder:text-secondary transition-colors">
@@ -203,7 +203,7 @@
             searchInput.addEventListener('input', () => { query = searchInput.value.trim().toLowerCase(); apply(); });
 
             // Only show filters when there's more than one category to choose from.
-            if (cats.length > 1) controls.classList.remove('hidden');
+            if (cats.length > 1) controls.classList.remove('invisible'); else controls.classList.add('hidden');
         } catch (e) {
             console.error(e);
             loading.classList.add('hidden');
