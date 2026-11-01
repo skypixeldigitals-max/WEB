@@ -61,8 +61,8 @@
             <!-- Left: form -->
             <div class="md:col-span-8">
                 <!-- Submits via FormSubmit's AJAX endpoint so we can show loading / success / failure
-                     states in-page. TESTING inbox: skypixeldigitals@gmail.com. The endpoint requires a
-                     one-time activation (first normal submission). Swap to shakir.jamaldeen@gmail.com before go-live. -->
+                     states in-page. Delivers to shakir.jamaldeen@gmail.com; FormSubmit needs a one-time
+                     activation (the first submission emails an "Activate" link to that inbox). -->
                 <form id="contactForm" class="flex flex-col gap-8 max-w-2xl" novalidate>
                     <!-- Honeypot: real users never fill this; bots do. -->
                     <input type="text" name="_honey" id="honey" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -173,7 +173,7 @@
     mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
     // ---------- Contact form: validation + loading / success / failure states ----------
-    const FORM_ENDPOINT = 'https://formsubmit.co/ajax/skypixeldigitals@gmail.com'; // TESTING inbox; swap to Shakir's before go-live
+    const FORM_ENDPOINT = 'https://formsubmit.co/ajax/shakir.jamaldeen@gmail.com';
     const form = document.getElementById('contactForm');
     const statusBox = document.getElementById('formStatus');
     const submitBtn = document.getElementById('submitBtn');

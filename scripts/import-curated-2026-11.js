@@ -22,11 +22,11 @@ const PROJECTS = [
   { folder: "Landesi", slug: "landesi-galle", name: "Landesi", location: "Galle, Sri Lanka", category: "Villas & Private Homes" },
   { folder: "Le Grand", slug: "le-grand-galle", name: "Le Grand", location: "Galle, Sri Lanka", category: "Resorts & Hotels" },
   { folder: "Lunuganga", slug: "lunuganga", name: "Lunuganga", location: "Bentota, Sri Lanka", category: "Resorts & Hotels" },
-  { folder: "Mimosa Hill", slug: "mimosa-hill", name: "Mimosa Hill", location: "Sri Lanka", category: "Villas & Private Homes" },
+  { folder: "Mimosa Hill", slug: "mimosa-hill", name: "Mimosa Hill", location: "Hiriketiya, Sri Lanka", category: "Villas & Private Homes" },
   { folder: "Sihina Kosgoda", slug: "sihina-kosgoda", name: "Sihina", location: "Kosgoda, Sri Lanka", category: "Villas & Private Homes" },
-  { folder: "Suhasa", slug: "suhasa", name: "Suhasa", location: "Sri Lanka", category: "Villas & Private Homes" },
-  { folder: "Summer Una", slug: "summer-una", name: "Summer Una", location: "Sri Lanka", category: "Villas & Private Homes" },
-  { folder: "The Bunker House", slug: "the-bunker-house", name: "The Bunker House", location: "Sri Lanka", category: "Villas & Private Homes" },
+  { folder: "Suhasa", slug: "suhasa", name: "Suhasa", location: "Ahangama, Sri Lanka", category: "Villas & Private Homes" },
+  { folder: "Summer Una", slug: "summer-una", name: "Summer Una", location: "Galle, Sri Lanka", category: "Villas & Private Homes" },
+  { folder: "The Bunker House", slug: "the-bunker-house", name: "The Bunker House", location: "Colombo, Sri Lanka", category: "Villas & Private Homes" },
 ];
 
 const q = (s) => "'" + String(s).replace(/'/g, "''") + "'";
