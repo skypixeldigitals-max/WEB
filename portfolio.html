@@ -5,19 +5,21 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Shakir Jamaldeen Photography | Portfolio</title>
     <meta content="A curated portfolio of villas, boutique hotels and interiors photographed by Shakir Jamaldeen in Sri Lanka and worldwide." name="description">
+    <link rel="canonical" href="https://skypixeldigitals-max.github.io/WEB/portfolio.html">
     <link rel="icon" type="image/png" sizes="64x64" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://skypixeldigitals-max.github.io/WEB/portfolio.html">
     <meta property="og:site_name" content="Shakir Jamaldeen Photography">
     <meta property="og:title" content="Portfolio | Shakir Jamaldeen Photography">
     <meta property="og:description" content="Villas, resorts and private homes across Sri Lanka, in architecture, interiors and aerial photography.">
-    <meta property="og:image" content="images/portfolio/le-grand-galle-1.jpg">
+    <meta property="og:image" content="https://skypixeldigitals-max.github.io/WEB/images/portfolio/le-grand-galle-1.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Portfolio | Shakir Jamaldeen Photography">
     <meta name="twitter:description" content="Seventeen properties across Sri Lanka, in architecture, interiors and aerial photography.">
-    <meta name="twitter:image" content="images/portfolio/le-grand-galle-1.jpg">
+    <meta name="twitter:image" content="https://skypixeldigitals-max.github.io/WEB/images/portfolio/le-grand-galle-1.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=add,apartment,arrow_back,arrow_forward,arrow_outward,call,check,chevron_left,chevron_right,close,delete,diamond,drag_indicator,east,edit,handshake,hourglass_empty,keyboard_arrow_down,keyboard_arrow_up,mail,menu,search,upload,visibility,west&amp;display=block" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body class="bg-background text-on-surface selection:bg-primary selection:text-white font-body-md">
@@ -120,6 +122,8 @@
     menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
     mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
+    // Grids use the small WebP made alongside each gallery photo (NN.jpg -> NN-sm.webp); falls back to the original.
+    const smallImg = (u) => /^images\/gallery\/.+\.jpg$/.test(u) ? u.replace(/\.jpg$/, '-sm.webp') : u;
     const esc = (s) => (s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
     (async () => {
@@ -145,7 +149,7 @@
                 const imgs = (p.property_images || []).slice().sort((a, b) => a.sort_order - b.sort_order).slice(0, 2);
                 const tiles = imgs.map(im =>
                     `<a href="gallery.html?p=${encodeURIComponent(p.slug)}" class="image-reveal aspect-[4/3] overflow-hidden block cursor-pointer">
-                        <img class="w-full h-full object-cover" loading="lazy" alt="${esc(p.name)}" src="${esc(im.url)}">
+                        <img class="w-full h-full object-cover" loading="lazy" decoding="async" width="800" height="600" alt="${esc(p.name)}${p.location ? ', ' + esc(p.location) : ''}" src="${esc(smallImg(im.url))}" onerror="if(this.src.indexOf('-sm.webp')>0)this.src='${esc(im.url)}'">
                     </a>`).join('');
                 return `<section class="project-section grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start scroll-mt-32" id="${esc(p.slug)}" data-name="${esc((p.name || '').toLowerCase())}" data-location="${esc((p.location || '').toLowerCase())}" data-category="${esc(p.category || '')}">
                     <div class="md:col-span-4 md:order-last md:sticky md:top-32">
@@ -207,5 +211,6 @@
         }
     })();
 </script>
+<script src="js/analytics.js" defer></script>
 </body>
 </html>

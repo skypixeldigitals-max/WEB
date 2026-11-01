@@ -7,7 +7,7 @@
     <title>Admin — Shakir Jamaldeen Photography</title>
     <link rel="icon" type="image/png" href="images/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=add,apartment,arrow_back,arrow_forward,arrow_outward,call,check,chevron_left,chevron_right,close,delete,diamond,drag_indicator,east,edit,handshake,hourglass_empty,keyboard_arrow_down,keyboard_arrow_up,mail,menu,search,upload,visibility,west&amp;display=block" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body class="bg-background text-on-surface font-body-md">
@@ -426,7 +426,7 @@
     });
 
     // ---------- IMAGE UPLOAD (resize client-side) ----------
-    async function resizeToBlob(file, maxDim = 2400, quality = 0.82) {
+    async function resizeToBlob(file, maxDim = 1600, quality = 0.78) {
         const bmp = await createImageBitmap(file);
         let w = bmp.width, h = bmp.height;
         if (Math.max(w, h) > maxDim) { const s = maxDim / Math.max(w, h); w = Math.round(w * s); h = Math.round(h * s); }

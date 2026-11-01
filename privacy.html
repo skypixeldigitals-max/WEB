@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" sizes="64x64" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=add,apartment,arrow_back,arrow_forward,arrow_outward,call,check,chevron_left,chevron_right,close,delete,diamond,drag_indicator,east,edit,handshake,hourglass_empty,keyboard_arrow_down,keyboard_arrow_up,mail,menu,search,upload,visibility,west&amp;display=block" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body class="bg-background text-on-surface selection:bg-primary selection:text-white font-body-md">
@@ -63,7 +63,7 @@
 
         <div>
             <h2 class="font-bold text-[18px] mb-3">Cookies</h2>
-            <p>This website does not use tracking or advertising cookies. Any essential storage is limited to what is needed for the site to function.</p>
+            <p>With your consent, this website uses Google Analytics cookies to understand how visitors use it, such as pages viewed, time on site, device type and approximate location. IP addresses are anonymised. No advertising cookies are used. You can accept or decline in the cookie banner, and change your choice at any time by clearing this site's data in your browser.</p>
         </div>
 
         <div>
@@ -103,5 +103,6 @@
     menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
     mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 </script>
+<script src="js/analytics.js" defer></script>
 </body>
 </html>

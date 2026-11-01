@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" sizes="64x64" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=add,apartment,arrow_back,arrow_forward,arrow_outward,call,check,chevron_left,chevron_right,close,delete,diamond,drag_indicator,east,edit,handshake,hourglass_empty,keyboard_arrow_down,keyboard_arrow_up,mail,menu,search,upload,visibility,west&amp;display=block" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body class="bg-background text-on-surface selection:bg-primary selection:text-white font-body-md">
@@ -125,6 +125,8 @@
     menuToggle.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
     mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
+    // Grids use the small WebP made alongside each gallery photo (NN.jpg -> NN-sm.webp); falls back to the original.
+    const smallImg = (u) => /^images\/gallery\/.+\.jpg$/.test(u) ? u.replace(/\.jpg$/, '-sm.webp') : u;
     const grid = document.getElementById('galleryGrid');
     const slug = new URLSearchParams(location.search).get('p');
     let images = [];
@@ -178,6 +180,14 @@
             propName = data.name;
             images = (data.property_images || []).slice().sort((a, b) => a.sort_order - b.sort_order).map(x => x.url);
             document.title = 'Shakir Jamaldeen Photography | ' + data.name;
+            // Per-project description + structured data so search engines see each gallery properly.
+            const desc = data.name + (data.location ? ', ' + data.location : '') + ': ' + images.length + ' photographs of architecture and interiors by Shakir Jamaldeen.';
+            document.querySelector('meta[name="description"]').setAttribute('content', desc);
+            const ld = document.createElement('script'); ld.type = 'application/ld+json';
+            ld.textContent = JSON.stringify({ '@context': 'https://schema.org', '@type': 'ImageGallery', name: data.name + ' | Shakir Jamaldeen Photography', description: desc,
+                author: { '@type': 'Person', name: 'Shakir Jamaldeen' },
+                image: images.slice(0, 10).map(u => new URL(u, location.href).href) });
+            document.head.appendChild(ld);
             document.getElementById('galleryTitle').textContent = data.name;
             document.getElementById('gallerySubtitle').textContent = data.location || '';
             if (!images.length) { showEmpty(); return; }
@@ -185,7 +195,9 @@
                 const tile = document.createElement('div');
                 tile.className = 'image-reveal aspect-[4/3] overflow-hidden cursor-pointer';
                 const img = document.createElement('img');
-                img.className = 'w-full h-full object-cover'; img.loading = 'lazy'; img.src = src; img.alt = data.name + ', photo ' + (i + 1);
+                img.className = 'w-full h-full object-cover'; img.loading = i < 6 ? 'eager' : 'lazy'; img.decoding = 'async'; img.width = 800; img.height = 600;
+                img.src = smallImg(src); img.onerror = () => { if (img.src.indexOf('-sm.webp') > 0) img.src = src; };
+                img.alt = data.name + (data.location ? ', ' + data.location : '') + ', photo ' + (i + 1) + ' of ' + images.length;
                 tile.appendChild(img);
                 tile.addEventListener('click', () => openLightbox(i));
                 grid.appendChild(tile);
@@ -193,5 +205,6 @@
         } catch (e) { console.error(e); showEmpty(); }
     })();
 </script>
+<script src="js/analytics.js" defer></script>
 </body>
 </html>
