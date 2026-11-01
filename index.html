@@ -18,7 +18,9 @@
     <meta name="twitter:title" content="Shakir Jamaldeen Photography | Sri Lanka">
     <meta name="twitter:description" content="Photography of luxury boutique villas and hotels in Sri Lanka and worldwide.">
     <meta name="twitter:image" content="https://skypixeldigitals-max.github.io/WEB/images/hero-1.jpg">
-    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&amp;display=swap" rel="stylesheet">
+    <link rel="preload" href="fonts/poiret-one-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=add,apartment,arrow_back,arrow_forward,arrow_outward,call,check,chevron_left,chevron_right,close,delete,diamond,drag_indicator,east,edit,handshake,hourglass_empty,keyboard_arrow_down,keyboard_arrow_up,mail,menu,search,upload,visibility,west&amp;display=block" rel="stylesheet">
     <link rel="preload" as="image" href="images/hero-1-1920.webp" imagesrcset="images/hero-1-1280.webp 1280w, images/hero-1-1920.webp 1920w, images/hero-1.webp 3840w" imagesizes="100vw" fetchpriority="high">
     <link href="css/style.css" rel="stylesheet">
@@ -119,10 +121,10 @@
                 <img alt="Camel rider on desert dunes at dawn, Oman" class="w-full h-full object-cover" data-src="images/hero-21-1920.webp" data-srcset="images/hero-21-1280.webp 1280w, images/hero-21-1920.webp 1920w, images/hero-21.webp 3840w" sizes="100vw">
             </div>
             <div class="hero-slide absolute inset-0">
-                <img alt="Glass-walled dining pavilion overlooking misty hills, Sri Lanka" class="w-full h-full object-cover" data-src="images/hero-22.webp">
+                <img alt="Glass-walled dining pavilion overlooking misty hills, Sri Lanka" class="w-full h-full object-cover" data-src="images/hero-22-1920.webp" data-srcset="images/hero-22-1280.webp 1280w, images/hero-22-1920.webp 1920w, images/hero-22.webp 3840w" sizes="100vw">
             </div>
             <div class="hero-slide absolute inset-0">
-                <img alt="Colonnaded villa with a long reflecting pool and palm trees, Sri Lanka" class="w-full h-full object-cover" data-src="images/hero-23-1920.webp" data-srcset="images/hero-23-1280.webp 1280w, images/hero-23-1920.webp 1920w, images/hero-23.webp 3096w" sizes="100vw">
+                <img alt="Colonnaded villa with a long reflecting pool and palm trees, Sri Lanka" class="w-full h-full object-cover" data-src="images/hero-23-1920.webp" data-srcset="images/hero-23-1280.webp 1280w, images/hero-23-1920.webp 1920w, images/hero-23.webp 3840w" sizes="100vw">
             </div>
             <div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/55 via-black/25 to-black/35"></div>
         </div>
@@ -450,8 +452,8 @@
     </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="js/sb.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+<script src="js/sb.js" defer></script>
 <script>
     // Hero Slideshow
     const heroSlides = document.querySelectorAll('.hero-slide');
@@ -529,7 +531,8 @@
 
     // Load published reviews from the database; the built-in ones stay as a fallback if unavailable.
     const escR = (s) => (s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-    (async () => {
+    // Runs after the deferred Supabase scripts (DOMContentLoaded fires after deferred scripts execute).
+    document.addEventListener('DOMContentLoaded', async () => {
         try {
             if (!window.sb) return;
             const { data } = await window.sb.from('reviews').select('author,company,quote').eq('status', 'published').order('sort_order');
@@ -543,7 +546,7 @@
                 currentIdx = 0; updateSlider(); startReviewAuto();
             }
         } catch (e) { /* keep the static fallback testimonials */ }
-    })();
+    });
 
     // Mobile menu toggle
     const menuToggle = document.getElementById('menuToggle');

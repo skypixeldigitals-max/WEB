@@ -18,7 +18,9 @@
     <meta name="twitter:title" content="Portfolio | Shakir Jamaldeen Photography">
     <meta name="twitter:description" content="Seventeen properties across Sri Lanka, in architecture, interiors and aerial photography.">
     <meta name="twitter:image" content="https://skypixeldigitals-max.github.io/WEB/images/portfolio/le-grand-galle-1.jpg">
-    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&amp;display=swap" rel="stylesheet">
+    <link rel="preload" href="fonts/poiret-one-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;icon_names=add,apartment,arrow_back,arrow_forward,arrow_outward,call,check,chevron_left,chevron_right,close,delete,diamond,drag_indicator,east,edit,handshake,hourglass_empty,keyboard_arrow_down,keyboard_arrow_up,mail,menu,search,upload,visibility,west&amp;display=block" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
@@ -174,7 +176,7 @@
                 return sections.filter(s => key === 'all' || s.dataset.category === key).length;
             }
             tabsWrap.innerHTML = tabDefs.map(t =>
-                `<button type="button" class="filter-tab pb-1 border-b-2 transition-colors ${t.key === 'all' ? 'border-primary text-primary' : 'border-transparent text-secondary hover:text-primary'}" data-cat="${esc(t.key)}">${esc(t.label)} <span class="text-secondary/70">(${count(t.key)})</span></button>`
+                `<button type="button" class="filter-tab pb-1 border-b-2 transition-colors ${t.key === 'all' ? 'border-primary text-primary' : 'border-transparent text-secondary hover:text-primary'}" data-cat="${esc(t.key)}">${esc(t.label)} <span class="text-on-surface-variant">(${count(t.key)})</span></button>`
             ).join('');
             const tabBtns = Array.from(tabsWrap.querySelectorAll('.filter-tab'));
 
