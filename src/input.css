@@ -117,5 +117,11 @@
 
   .material-symbols-outlined {
     font-family: "Material Symbols Outlined" !important;
+    /* Fixed 1em box so the ligature text ("arrow_forward") can't take up extra width before the icon font loads. */
+    display: inline-block;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 1;
   }
 }
