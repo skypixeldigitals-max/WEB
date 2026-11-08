@@ -48,6 +48,7 @@
     </a>
     <h1 class="text-display-lg-mobile md:text-display-lg tracking-tight leading-[0.95] mb-4 min-h-[1em]" id="galleryTitle"></h1>
     <p class="font-label-caps text-[12px] text-on-surface-variant tracking-[0.2em] font-bold min-h-[1.25rem]" id="gallerySubtitle"></p>
+    <p class="hidden font-body-lg text-body-lg text-on-surface/90 leading-relaxed text-crisp max-w-2xl mt-6" id="galleryDescription"></p>
 </header>
 
 <!-- Album grid -->
@@ -173,7 +174,7 @@
     (async () => {
         if (!slug) { showEmpty(); return; }
         try {
-            let q = sb.from('properties').select('name,location,property_images(url,sort_order)').eq('slug', slug);
+            let q = sb.from('properties').select('name,location,description,property_images(url,sort_order)').eq('slug', slug);
             // Admin preview (?preview=1) shows drafts too — RLS still blocks non-admins.
             if (!new URLSearchParams(location.search).get('preview')) q = q.eq('status', 'published');
             const { data, error } = await q.maybeSingle();
@@ -183,7 +184,7 @@
             images = (data.property_images || []).slice().sort((a, b) => a.sort_order - b.sort_order).map(x => x.url);
             document.title = 'Shakir Jamaldeen Photography | ' + data.name;
             // Per-project description + structured data so search engines see each gallery properly.
-            const desc = data.name + (data.location ? ', ' + data.location : '') + ': ' + images.length + ' photographs of architecture and interiors by Shakir Jamaldeen.';
+            const desc = (data.description && data.description.trim()) ? data.description.trim().slice(0, 155) : data.name + (data.location ? ', ' + data.location : '') + ': ' + images.length + ' photographs of architecture and interiors by Shakir Jamaldeen.';
             document.querySelector('meta[name="description"]').setAttribute('content', desc);
             const ld = document.createElement('script'); ld.type = 'application/ld+json';
             ld.textContent = JSON.stringify({ '@context': 'https://schema.org', '@type': 'ImageGallery', name: data.name + ' | Shakir Jamaldeen Photography', description: desc,
@@ -192,6 +193,8 @@
             document.head.appendChild(ld);
             document.getElementById('galleryTitle').textContent = data.name;
             document.getElementById('gallerySubtitle').textContent = data.location || '';
+            // Project description written in the admin panel (shown only when filled in)
+            if (data.description && data.description.trim()) { const d = document.getElementById('galleryDescription'); d.textContent = data.description.trim(); d.classList.remove('hidden'); }
             if (!images.length) { showEmpty(); return; }
             images.forEach((src, i) => {
                 const tile = document.createElement('div');
